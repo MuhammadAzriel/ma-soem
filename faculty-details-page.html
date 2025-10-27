@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultas & Program Studi - Universitas Ma'soem</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+}
+
+               /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #0052CC;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Faculty Navigation */
+.faculty-nav {
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 70px;
+    z-index: 90;
+}
+
+.faculty-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.faculty-nav-btn {
+    padding: 0.8rem 1.5rem;
+    background: #f0f7ff;
+    color: #0052CC;
+    border: 2px solid #0052CC;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.faculty-nav-btn:hover {
+    background: #0052CC;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Faculty Section */
+.faculty-section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 150px;
+}
+
+.faculty-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    border-left: 5px solid #0052CC;
+}
+
+.faculty-icon-large {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.faculty-title h2 {
+    font-size: 2.5rem;
+    color: #0052CC;
+    margin-bottom: 0.5rem;
+}
+
+.faculty-title p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Program Cards */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.program-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.program-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e8f0fe;
+}
+
+.program-badge {
+    background: #0052CC;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.program-card h3 {
+    color: #0052CC;
+    font-size: 1.8rem;
+    flex: 1;
+}
+.program-card h3 a {
+    color: #0052CC;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.program-card h3 a:hover {
+    color: #0052CC;
+    text-decoration: underline;
+}
+
+.program-description {
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.program-features {
+    margin-bottom: 2rem;
+}
+
+.program-features h4 {
+    color: #0052CC;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.features-list {
+    list-style: none;
+}
+
+.features-list li {
+    padding: 0.6rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #555;
+}
+
+.features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0052CC;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.career-prospects {
+    background: #f0f7ff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+.career-prospects h4 {
+    color: #0052CC;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.career-prospects p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 15px;
+    margin: 4rem auto;
+    max-width: 1400px;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-button {
+    background: white;
+    color: #0052CC;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ==== FULL WIDTH PARTNERS & FOOTER ==== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Partner Section */
+.partners-section {
+    background: #0052CC;
+    padding: 3rem 0;
+    text-align: center;
+    margin: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.partners-section h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.partners-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.partner-logo {
+    background: #7BD3EA;
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* Footer */
+footer {
+    background: #2b2b2b;
+    color: white;
+    margin: 0;
+    padding: 3rem 0 1rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border: none;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding: 0 3rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-about h3,
+.footer-contact h3,
+.footer-social h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-address {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-address .icon {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.footer-address p {
+    margin: 0;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.contact-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-item .icon {
+    color: #ff4b4b;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+}
+
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: white;
+}
+
+/* Sosial Media */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #404040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    background: #0052CC;
+    transform: translateY(-3px);
+}
+
+/* QR Code */
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            overflow: hidden; /* agar gambar tidak keluar dari kotak */
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* supaya proporsi QR tetap benar */
+        }
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid #404040;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    padding: 1.5rem 0 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* =====================
+   RESPONSIVE DESIGN
+===================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .page-header {
+        padding: 3rem 1rem;
+    }
+
+    .faculty-header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .faculty-icon-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .footer-about,
+    .footer-contact,
+    .footer-social {
+        text-align: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .faculty-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .program-card {
+        padding: 1.5rem;
+    }
+
+    .partner-logo {
+        height: 80px;
+        padding: 1rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .qr-code {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding: 1rem 0;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="salam-rektor.html">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="faculty-details-page.html">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Fakultas & Program Studi</h1>
+        <p>Temukan program studi yang sesuai dengan minat dan bakatmu untuk meraih masa depan cemerlang</p>
+    </div>
+
+    <div class="faculty-nav">
+        <div class="faculty-nav-container">
+            <a href="#ekonomi" class="faculty-nav-btn">💰 Ekonomi Bisnis Islam</a>
+            <a href="#komputer" class="faculty-nav-btn">💻 Fakultas Komputer</a>
+            <a href="#pertanian" class="faculty-nav-btn">🌾 Fakultas Pertanian</a>
+            <a href="#pendidikan" class="faculty-nav-btn">📚 Keguruan & Ilmu Pendidikan</a>
+            <a href="#teknik" class="faculty-nav-btn">⚙️ Fakultas Teknik</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Fakultas Ekonomi Bisnis Islam -->
+        <section class="faculty-section" id="ekonomi">
+            <div class="faculty-header">
+                <div class="faculty-icon-large">💰</div>
+                <div class="faculty-title">
+                    <h2>Fakultas Ekonomi Bisnis Islam</h2>
+                    <p>Membangun profesional di bidang ekonomi dan bisnis berbasis syariah</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Perbankan Syariah</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Program studi yang mempelajari prinsip-prinsip ekonomi Islam, instrumen keuangan syariah, manajemen risiko syariah, dan hukum perbankan syariah. Lulusan akan memiliki pemahaman mendalam mengenai prinsip ekonomi Islam dan dapat menerapkannya dalam praktik di dunia perbankan.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Prinsip-prinsip ekonomi Islam</li>
+                            <li>Instrumen keuangan syariah</li>
+                            <li>Manajemen risiko syariah</li>
+                            <li>Hukum perbankan syariah</li>
+                            <li>Analisis keuangan syariah</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Lulusan dapat bekerja di bank syariah, lembaga keuangan mikro syariah, perusahaan asuransi syariah, sektor konsultasi keuangan, lembaga pemerintah, atau organisasi non-pemerintah yang berfokus pada pengembangan keuangan syariah.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Manajemen Bisnis Syariah</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Lulusan memiliki pengetahuan mengenai prinsip ekonomi Islam, manajemen keuangan syariah, hukum bisnis syariah, dan produk keuangan berbasis syariah yang dapat diterapkan di berbagai perusahaan konvensional maupun syariah.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Manajemen keuangan syariah</li>
+                            <li>Hukum bisnis syariah</li>
+                            <li>Produk keuangan berbasis syariah</li>
+                            <li>Strategi bisnis syariah</li>
+                            <li>Etika bisnis Islam</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Dapat bekerja di perusahaan konvensional yang mengimplementasikan prinsip-prinsip ekonomi Islam, perusahaan multinasional, atau perusahaan lokal yang menerapkan prinsip syariah. Permintaan akan lulusan manajemen bisnis syariah semakin meningkat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fakultas Komputer -->
+        <section class="faculty-section" id="komputer">
+            <div class="faculty-header">
+                <div class="faculty-icon-large">💻</div>
+                <div class="faculty-title">
+                    <h2>Fakultas Komputer</h2>
+                    <p>Mencetak profesional IT yang kompeten dan siap menghadapi era digital</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3><a href="all-prodi-pages1.html#sistem-informasi">Sistem Informasi</a></h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Lulusan memiliki pemahaman mendalam tentang pengembangan perangkat lunak, manajemen database, analisis sistem, keamanan informasi, dan teknologi jaringan. Membuat mereka siap bekerja di berbagai posisi di perusahaan teknologi maupun industri lain.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Pengembangan perangkat lunak</li>
+                            <li>Manajemen database</li>
+                            <li>Analisis sistem informasi</li>
+                            <li>Keamanan informasi</li>
+                            <li>Teknologi jaringan</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Software Developer, System Analyst, Database Administrator, IT Security Specialist, Network Engineer di perusahaan teknologi, start-up, atau perusahaan jasa teknologi informasi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Digital Bisnis</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Program studi yang mengajarkan berbagai aspek bisnis terkait teknologi, termasuk e-commerce, digital marketing, analisis data, teknologi informasi, dan strategi bisnis digital untuk era transformasi digital.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>E-commerce dan marketplace</li>
+                            <li>Digital marketing dan SEO</li>
+                            <li>Analisis data bisnis</li>
+                            <li>Teknologi informasi</li>
+                            <li>Strategi bisnis digital</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Digital Marketing Specialist, E-commerce Manager, Business Analyst, Social Media Manager di perusahaan teknologi, ritel, agensi digital marketing, atau memulai usaha sendiri.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Komputerisasi Akuntansi</h3>
+                        <span class="program-badge">D3</span>
+                    </div>
+                    <p class="program-description">
+                        Keahlian mengelola data, menganalisis informasi keuangan, dan menggunakan perangkat lunak akuntansi maupun sistem informasi akuntansi. Program yang menggabungkan akuntansi dengan teknologi informasi.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Sistem informasi akuntansi</li>
+                            <li>Software akuntansi (MYOB, SAP)</li>
+                            <li>Analisis data keuangan</li>
+                            <li>Perpajakan digital</li>
+                            <li>Audit sistem informasi</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Staff Akuntansi, Finance Staff, Tax Officer di perusahaan jasa, manufaktur, perbankan, lembaga keuangan, dan konsultan akuntansi yang membutuhkan tenaga ahli dalam pengelolaan data keuangan digital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fakultas Pertanian -->
+        <section class="faculty-section" id="pertanian">
+            <div class="faculty-header">
+                <div class="faculty-icon-large">🌾</div>
+                <div class="faculty-title">
+                    <h2>Fakultas Pertanian</h2>
+                    <p>Mengembangkan inovasi di bidang pertanian dan teknologi pangan berkelanjutan</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Agribisnis</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Lulusan mengetahui cara mengelola usaha pertanian atau peternakan agar mencapai efisiensi dan keuntungan maksimal. Diajarkan analisis pasar, perencanaan produksi, dan strategi pemasaran yang efisien dan efektif.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Manajemen usaha pertanian</li>
+                            <li>Analisis pasar agribisnis</li>
+                            <li>Perencanaan produksi</li>
+                            <li>Strategi pemasaran produk pertanian</li>
+                            <li>Manajemen rantai pasok pertanian</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Bekerja di perusahaan agribisnis, pergudangan dan distribusi produk pertanian, lembaga riset pertanian, bank pembiayaan pertanian, atau menjadi wirausaha di bidang pertanian.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Teknologi Pangan</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Dengan teknologi pangan, proses pembuatan produk pangan menjadi lebih efisien dan inovatif. Keahlian lulusan sangat dibutuhkan di berbagai industri, dari perusahaan makanan dan minuman hingga institusi riset.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Pengolahan dan pengawetan pangan</li>
+                            <li>Keamanan pangan</li>
+                            <li>Inovasi produk pangan</li>
+                            <li>Kontrol kualitas pangan</li>
+                            <li>Teknologi fermentasi</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Quality Control, Product Developer, Food Technologist di perusahaan makanan dan minuman, industri farmasi, institusi riset pangan, atau menjadi konsultan dan pengusaha di bidang pangan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fakultas Keguruan dan Ilmu Pendidikan -->
+        <section class="faculty-section" id="pendidikan">
+            <div class="faculty-header">
+                <div class="faculty-icon-large">📚</div>
+                <div class="faculty-title">
+                    <h2>Fakultas Keguruan dan Ilmu Pendidikan</h2>
+                    <p>Membentuk pendidik profesional dan konselor yang berkualitas</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Pendidikan Bahasa Inggris</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Program studi yang menawarkan keahlian sangat dibutuhkan di era globalisasi dan perkembangan teknologi. Lulusan memiliki kompetensi mengajar bahasa Inggris dan berkomunikasi dalam konteks internasional.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Metodologi pengajaran bahasa Inggris</li>
+                            <li>Linguistik dan grammar</li>
+                            <li>English for specific purposes</li>
+                            <li>Translation dan interpretation</li>
+                            <li>Assessment dan evaluasi pembelajaran</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Guru bahasa Inggris di berbagai lembaga pendidikan, penerjemah, interpreter di perusahaan multinasional, media, industri pariwisata, atau diplomat di kementerian luar negeri.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Bimbingan dan Konseling</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Mahasiswa memiliki keahlian dalam melakukan asesmen psikologis untuk membantu individu mengatasi masalah pribadi, profesional, dan akademis. Program yang mempersiapkan konselor profesional.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Teknik konseling dan psikoterapi</li>
+                            <li>Asesmen psikologis</li>
+                            <li>Bimbingan karir</li>
+                            <li>Konseling kelompok</li>
+                            <li>Psikologi perkembangan</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Konselor di sekolah, perguruan tinggi, lembaga pelatihan, bagian HRD di perusahaan, konsultan pengembangan sumber daya manusia, atau praktisi konseling mandiri.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fakultas Teknik -->
+        <section class="faculty-section" id="teknik">
+            <div class="faculty-header">
+                <div class="faculty-icon-large">⚙️</div>
+                <div class="faculty-title">
+                    <h2>Fakultas Teknik</h2>
+                    <p>Menghasilkan engineer yang inovatif dan siap menghadapi tantangan industri</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+
+                 <div class="program-card">
+                    <div class="program-header">
+                        <h3><a href="all-prodi-pages1.html#informatika">Manajemen Informatika</a></h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Program Sarjana yang mempersiapkan mahasiswa dengan keterampilan praktis dalam pengelolaan sistem informasi, pengembangan aplikasi, dan manajemen teknologi informasi untuk kebutuhan industri.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Pemrograman aplikasi</li>
+                            <li>Manajemen sistem informasi</li>
+                            <li>Database management</li>
+                            <li>Web development</li>
+                            <li>IT Support dan maintenance</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Programmer, IT Support, Web Developer, Database Administrator di berbagai perusahaan yang membutuhkan tenaga IT profesional dengan keterampilan praktis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Teknik Industri</h3>
+                        <span class="program-badge">S1</span>
+                    </div>
+                    <p class="program-description">
+                        Mahasiswa mempelajari perencanaan dan pengendalian produksi, manajemen rantai pasok, perancangan sistem kerja, ergonomi, analisis dan perancangan sistem, serta teknik pengambilan keputusan untuk optimalisasi proses industri.
+                    </p>
+                    
+                    <div class="program-features">
+                        <h4>🎯 Keahlian yang Dipelajari</h4>
+                        <ul class="features-list">
+                            <li>Perencanaan dan pengendalian produksi</li>
+                            <li>Manajemen rantai pasok</li>
+                            <li>Perancangan sistem kerja</li>
+                            <li>Ergonomi dan K3</li>
+                            <li>Lean manufacturing dan Six Sigma</li>
+                        </ul>
+                    </div>
+
+                    <div class="career-prospects">
+                        <h4>💼 Prospek Karir</h4>
+                        <p>
+                            Engineer, Production Planner, Quality Assurance, Project Manager, atau Konsultan Industri di berbagai perusahaan manufaktur maupun jasa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners / Sponsor Section -->
+        <section class="partners-section">
+            <h3>Partnered With</h3>
+            <div class="partners-grid">
+                <div class="partner-logo"><img src="image/masoem.png" alt="AI Ma'soem"></div>
+                <div class="partner-logo"><img src="image/apotek.png" alt="Koperasi Ma'soem"></div>
+                <div class="partner-logo"><img src="image/arias.png" alt="Ma'soem Guesthouse"></div>
+                <div class="partner-logo"><img src="image/bpr.png" alt="Yayasan Almasoem"></div>
+                <div class="partner-logo"><img src="image/corp.png" alt="TRYOUT.ID"></div>
+                <div class="partner-logo"><img src="image/mes.png" alt="MES Muhammadiyah"></div>
+                <div class="partner-logo"><img src="image/cisco.png" alt="CISCO Academy"></div>
+                <div class="partner-logo"><img src="image/ib.png" alt="iB University"></div>
+                <div class="partner-logo"><img src="image/to.png" alt="TRYOUT.ID"></div>
+                <div class="partner-logo"><img src="image/kai.png" alt="KAI"></div>
+                <div class="partner-logo"><img src="image/bjbb-removebg-preview.png" alt="Bank BJB"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-main">
+                <div class="footer-about">
+                    <h3>Ma'soem University</h3>
+                    <div class="footer-address">
+                        <span class="icon">📍</span>
+                        <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <div>
+                            <p>Telp: 0819 1123 2333</p>
+                            <p>WA: 081903833092</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h3>Media Sosial</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">▶️</a>
+                        <a href="#" class="social-icon">📘</a>
+                    </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+            </div>
+        </footer>
+              

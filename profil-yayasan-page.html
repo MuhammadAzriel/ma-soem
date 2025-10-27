@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Yayasan Al Ma'soem - Universitas Ma'soem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #0052CC;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: #0052CC;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        .breadcrumb span {
+            color: #666;
+            margin: 0 0.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 89, 255, 0.95) 0%, rgba(0, 70, 136, 0.95) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-section h2 {
+            color: #0052CC;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #e8f0fe;
+        }
+
+        .content-section h3 {
+            color: #0052CC;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #0052CC;
+        }
+
+        .info-value {
+            color: #555;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+            border-left: 5px solid #0052CC;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box h3 {
+            color: #0052CC;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .highlight-box p {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .motto-box {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(30,60,114,0.3);
+        }
+
+        .motto-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .motto-box p {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .content-section ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .content-section ul li {
+            padding: 0.8rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .content-section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0052CC;
+            font-weight: bold;
+            font-size: 1.3rem;
+            top: 0.7rem;
+        }
+
+        .number-list {
+            counter-reset: item;
+            list-style: none;
+        }
+
+        .number-list li {
+            counter-increment: item;
+            padding-left: 3rem !important;
+        }
+
+        .number-list li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: #0052CC;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .education-section {
+            margin: 2rem 0;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #0052CC;
+        }
+
+        .education-item h4 {
+            color: #0052CC;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .education-item ul {
+            margin-top: 0.5rem;
+        }
+
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid #0052CC;
+        }
+
+        .vm-card h3 {
+            color: #0052CC;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+       /* Partners Section */
+        .partners-section {
+            background: #0052CC;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .partners-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .partners-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: #7BD3EA;
+            padding: 1.5rem;
+            border-radius: 10px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background: #2b2b2b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-address {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-address .icon {
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-address p {
+            margin: 0;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item .icon {
+            color: #0052CC;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-social h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #404040;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #0052CC;
+            transform: translateY(-3px);
+        }
+
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            overflow: hidden; /* agar gambar tidak keluar dari kotak */
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* supaya proporsi QR tetap benar */
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #404040;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+/* ========================= */
+/*      RESPONSIVE DESIGN    */
+/* ========================= */
+
+@media (max-width: 1200px) {
+  nav {
+    padding: 0 1.5rem;
+  }
+  .container {
+    padding: 2rem 1.5rem;
+  }
+  .partners-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet mode */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .vision-mission {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .partner-logo {
+    height: 90px;
+    padding: 1rem;
+  }
+
+  .qr-code {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile mode */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .breadcrumb {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .content-section {
+    padding: 1.5rem;
+  }
+
+  .vision-mission {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-address,
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .qr-code {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .partner-logo {
+    height: 80px;
+  }
+}
+
+/* Extra small devices (HP kecil) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .qr-code {
+    width: 90px;
+    height: 90px;
+  }
+
+  .partner-logo {
+    height: 70px;
+  }
+
+  .content-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="salam-rektor.html">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="faculty-details-page.html">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="breadcrumb">
+        <a href="index.html">Beranda</a>
+        <span>/</span>
+        <a href="#tentang">Tentang Kami</a>
+        <span>/</span>
+        <span style="color: #333;">Sejarah</span>
+    </div>
+
+    <div class="hero">
+        <h1>Profil Yayasan Al Ma'soem</h1>
+        <p>Sejarah dan Perjalanan Yayasan dalam Membangun Pendidikan Berkualitas</p>
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <h2>Informasi Dasar Yayasan</h2>
+            
+            <div class="info-grid">
+                <div class="info-label">Berdiri Tahun:</div>
+                <div class="info-value">1986</div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-label">Akta:</div>
+                <div class="info-value">Keputusan Hukum dan Hak Asasi Manusia RI No: AHU-1254.AH.01.04.Tahun 2011</div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-label">Alamat:</div>
+                <div class="info-value">Jl. Raya Cipacing No. 22 Jatinangor</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Jenjang Pendidikan</h2>
+            
+            <div class="education-section">
+                <div class="education-item">
+                    <h4>📚 Pendidikan Formal</h4>
+                    <ul>
+                        <li>Taman Kanak-Kanak (TK)</li>
+                        <li>Sekolah Dasar (SD)</li>
+                        <li>Sekolah Menengah Pertama (SMP)</li>
+                        <li>Sekolah Menengah Atas (SMA)</li>
+                        <li>Universitas Masoem / Masoem University (MU)</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <h4>🎯 Pendidikan Non Formal</h4>
+                    <ul>
+                        <li>Pesantren Siswa Al Ma'soem (PSAM)</li>
+                        <li>Kursus Komputer & Bahasa (LPK & LPB)</li>
+                        <li>Bimbingan Belajar</li>
+                        <li>Kursus</li>
+                        <li>Animasi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Latar Belakang Pendirian</h2>
+            
+            <p>Yayasan Al Ma'soem didirikan dengan tujuan mulia untuk memajukan pendidikan dan meningkatkan kualitas sumber daya manusia di Indonesia. Berikut adalah latar belakang pendirian yayasan:</p>
+
+            <ul class="number-list">
+                <li>Garis keturunan Keluarga Besar H. Ma'soem yang dikenal sebagai pengusaha dan juga pendidik</li>
+                <li>Sebagai salah satu wujud pengabdian kepada masyarakat</li>
+                <li>Antisipasi berkembangnya wilayah Bandung Timur dan Jatinangor sebagai daerah industri, pendidikan dan pemukiman</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Visi & Misi Yayasan</h2>
+
+            <div class="vision-mission">
+                <div class="vm-card">
+                    <h3>🎯 Visi</h3>
+                    <p>Membentuk generasi yang "Cageur, Bageur, Pinter" (Sehat, Baik, dan Pintar)</p>
+                </div>
+
+                <div class="vm-card">
+                    <h3>📋 Misi</h3>
+                    <ul>
+                        <li>Memberikan wahana yang memadai bagi upaya mencerdaskan masyarakat</li>
+                        <li>Memberikan wahana pendidikan yang berkesinambungan</li>
+                        <li>Mengentaskan generasi muda dari keterbelakangan imtak dan iptek</li>
+                        <li>Menyediakan sekaligus membiasakan sikap hidup disiplin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Tujuan Pendirian</h2>
+            
+            <div class="highlight-box">
+                <p>Sebagai tanggung jawab sosial dan kepedulian Keluarga Besar H. Ma'soem terhadap pendidikan dan peningkatan kualitas sumber daya manusia</p>
+            </div>
+
+            <p style="margin-top: 1.5rem;"><strong>Dengan Visi:</strong> Membentuk generasi yang "Cageur, Bageur, Pinter"</p>
+        </div>
+
+        <div class="motto-box">
+            <h3>Motto Yayasan</h3>
+            <p>"Cageur - Bageur - Pinter"</p>
+            <p style="font-size: 1.1rem; margin-top: 1rem; opacity: 0.95;">dan</p>
+            <p>"Sekolah Untuk Sekolah"</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Komitmen Yayasan</h2>
+            
+            <p>Yayasan Al Ma'soem berkomitmen untuk:</p>
+
+            <ul>
+                <li>Menyediakan pendidikan berkualitas dari tingkat TK hingga Perguruan Tinggi</li>
+                <li>Mengembangkan karakter peserta didik yang sehat jasmani dan rohani</li>
+                <li>Membangun kepribadian yang baik dan berakhlak mulia</li>
+                <li>Mencerdaskan kehidupan bangsa melalui pendidikan yang berkesinambungan</li>
+                <li>Mempersiapkan generasi yang siap menghadapi tantangan global</li>
+                <li>Mengintegrasikan ilmu pengetahuan dengan nilai-nilai keagamaan</li>
+                <li>Memberikan kontribusi nyata bagi pembangunan daerah dan nasional</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Perkembangan Yayasan</h2>
+            
+            <p>Sejak didirikan pada tahun 1986, Yayasan Al Ma'soem telah berkembang pesat menjadi salah satu lembaga pendidikan terpercaya di Jawa Barat. Dengan lokasi strategis di Jatinangor, yayasan ini telah menghasilkan ribuan alumni yang tersebar di berbagai bidang profesi.</p>
+
+            <p>Perkembangan wilayah Bandung Timur dan Jatinangor sebagai kawasan pendidikan dan industri semakin memperkuat posisi Yayasan Al Ma'soem sebagai pusat pendidikan yang relevan dengan kebutuhan masyarakat dan industri.</p>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3>💡 Keunggulan Yayasan</h3>
+                <p>Sistem pendidikan yang komprehensif dari TK hingga Universitas, fasilitas lengkap termasuk asrama, pendekatan pembelajaran yang mengintegrasikan ilmu pengetahuan dengan karakter building, serta jaringan kerjasama dengan dunia industri dan perguruan tinggi.</p>
+            </div>
+        </div>
+    </div>
+
+<section class="partners-section">
+    <h3>Partnered With</h3>
+    <div class="partners-grid">
+        <div class="partner-logo">
+            <img src="image/masoem.png" alt="AI Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/apotek.png" alt="Koperasi Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/arias.png" alt="Ma'soem Guesthouse">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bpr.png" alt="Yayasan Almasoem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/corp.png" alt="TRYOUT.ID">
+        </div>
+        <div class="partner-logo">
+            <img src="image/mes.png" alt="Gardu BSI">
+        </div>
+        <div class="partner-logo">
+            <img src="image/cisco.png" alt="MES Muhammadiyah">
+        </div>
+        <div class="partner-logo">
+            <img src="image/ib.png" alt="CISCO Academy">
+        </div>
+        <div class="partner-logo">
+            <img src="image/to.png" alt="iB University">
+        </div>
+        <div class="partner-logo">
+            <img src="image/kai.png" alt="LA Partner">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bjbb-removebg-preview.png" alt="LA Partner">
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-about">
+                <h3>Ma'soem University</h3>
+                <div class="footer-address">
+                    <span class="icon">📍</span>
+                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <p>Telp: 0819 1123 2333</p>
+                        <p>WA: 081903833092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶️</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+        </div>
+    </footer>    
+</body>
+</html>

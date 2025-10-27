@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Berita - Universitas Ma'soem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+               /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #0052CC;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: #0052CC;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        .breadcrumb span {
+            color: #666;
+            margin: 0 0.5rem;
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #e8f0fe;
+            color: #0052CC;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header h1 {
+            color: #0052CC;
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.95rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-image {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .article-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .article-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: #0052CC;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content h3 {
+            color: #0052CC;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 5px solid #0052CC;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #444;
+            font-style: italic;
+        }
+
+        .share-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .share-section h3 {
+            color: #0052CC;
+            margin-bottom: 1rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .share-btn.facebook {
+            background: #1877f2;
+        }
+
+        .share-btn.twitter {
+            background: #1da1f2;
+        }
+
+        .share-btn.whatsapp {
+            background: #25d366;
+        }
+
+        .share-btn.linkedin {
+            background: #0a66c2;
+        }
+
+        .related-news {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .related-news h3 {
+            color: #0052CC;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            border: 1px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .related-card h4 {
+            color: #0052CC;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .related-card a {
+            color: #0052CC;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #0052CC;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: #0052CC;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .partners-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .partners-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: #7BD3EA;
+            padding: 1.5rem;
+            border-radius: 10px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background: #2b2b2b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-address {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-address .icon {
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-address p {
+            margin: 0;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item .icon {
+            color: #0052CC;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-social h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #404040;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #0052CC;
+            transform: translateY(-3px);
+        }
+
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            overflow: hidden; /* agar gambar tidak keluar dari kotak */
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* supaya proporsi QR tetap benar */
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #404040;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* =====================
+   RESPONSIVE DESIGN
+===================== */
+
+/* Untuk tablet (lebar ≤ 992px) */
+@media (max-width: 992px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .article-header, 
+    .article-content, 
+    .share-section, 
+    .related-news {
+        padding: 2rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Untuk ponsel (lebar ≤ 600px) */
+@media (max-width: 600px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .page-header h1,
+    .article-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .article-image-placeholder {
+        height: 250px;
+        font-size: 3rem;
+    }
+
+    .partners-section {
+        padding: 2rem 1rem;
+    }
+
+    .partner-logo {
+        height: 80px;
+        padding: 1rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .qr-code {
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="salam-rektor.html">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="#fakultas">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Beranda</a>
+        <span>/</span>
+        <a href="berita.html">Berita</a>
+        <span>/</span>
+        <span style="color: #333;">Detail Berita</span>
+    </div>
+
+    <div class="article-container">
+        <a href="berita.html" class="back-btn">← Kembali ke Daftar Berita</a>
+
+        <article>
+            <div class="article-header">
+                <span class="article-category">Program Studi</span>
+                <h1>Teknologi Pangan S1 Universitas Ma'soem Cetak Problem Solver & Wirausahawan Pangan Berkarakter Unggul!</h1>
+                <div class="article-meta">
+                    <span>📅 25 Oktober 2025</span>
+                    <span>✍️ Admin Universitas</span>
+                    <span>👁️ 1,234 views</span>
+                </div>
+            </div>
+
+            <div class="article-image">
+                <div class="article-image-placeholder">🍽️</div>
+            </div>
+
+            <div class="article-content">
+                <p>
+                    Visi Program Studi Teknologi Pangan S1 di Ma'soem University adalah menjadi penyelenggara pendidikan di bidang Teknologi Pangan terbaik pada peringkat nasional dengan karakter unggul—cageur, bageur, dan pinter. Program studi ini dirancang untuk mencetak lulusan yang tidak hanya menguasai ilmu dan teknologi pangan, tetapi juga memiliki karakter kuat dan jiwa kewirausahaan.
+                </p>
+
+                <h2>Mengapa Memilih Teknologi Pangan?</h2>
+                <p>
+                    Di era modern ini, industri pangan berkembang sangat pesat. Kebutuhan akan profesional yang memahami teknologi pengolahan pangan, keamanan pangan, dan inovasi produk semakin meningkat. Program Studi Teknologi Pangan di Universitas Ma'soem hadir untuk menjawab tantangan tersebut.
+                </p>
+
+                <h3>Keunggulan Program Studi</h3>
+                <ul>
+                    <li><strong>Kurikulum Berbasis Industri:</strong> Pembelajaran yang disesuaikan dengan kebutuhan industri pangan modern</li>
+                    <li><strong>Praktikum Intensif:</strong> Fasilitas laboratorium lengkap untuk praktik pengolahan pangan</li>
+                    <li><strong>Kerja Sama Industri:</strong> Kemitraan dengan berbagai perusahaan pangan terkemuka</li>
+                    <li><strong>Sertifikasi Profesi:</strong> Peluang mendapatkan sertifikasi profesional di bidang pangan</li>
+                    <li><strong>Pengembangan Entrepreneurship:</strong> Program khusus untuk mengembangkan jiwa wirausaha</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>"Kami tidak hanya mendidik mahasiswa untuk menjadi pekerja, tetapi juga mencetak entrepreneur yang mampu menciptakan lapangan kerja di bidang pangan."</p>
+                </div>
+
+                <h2>Kompetensi Lulusan</h2>
+                <p>
+                    Lulusan Program Studi Teknologi Pangan akan memiliki kompetensi sebagai:
+                </p>
+                <ol>
+                    <li><strong>Food Technologist:</strong> Ahli dalam pengembangan dan pengolahan produk pangan</li>
+                    <li><strong>Quality Control Manager:</strong> Bertanggung jawab atas kualitas dan keamanan produk pangan</li>
+                    <li><strong>Product Development Specialist:</strong> Mengembangkan produk pangan inovatif</li>
+                    <li><strong>Food Safety Officer:</strong> Memastikan standar keamanan pangan terpenuhi</li>
+                    <li><strong>Food Entrepreneur:</strong> Membangun dan mengelola bisnis di bidang pangan</li>
+                </ol>
+
+                <h2>Prospek Karir</h2>
+                <p>
+                    Lulusan Teknologi Pangan memiliki prospek karir yang sangat luas, antara lain:
+                </p>
+                <ul>
+                    <li>Perusahaan makanan dan minuman (Unilever, Indofood, Nestle, dll)</li>
+                    <li>Industri farmasi dan nutraceutical</li>
+                    <li>Lembaga penelitian dan pengembangan pangan</li>
+                    <li>Badan pengawas keamanan pangan (BPOM)</li>
+                    <li>Startup food technology</li>
+                    <li>Konsultan keamanan dan kualitas pangan</li>
+                    <li>Entrepreneur industri makanan dan minuman</li>
+                </ul>
+
+                <h2>Fasilitas Pendukung</h2>
+                <p>
+                    Program Studi Teknologi Pangan didukung oleh berbagai fasilitas modern, termasuk:
+                </p>
+                <ul>
+                    <li>Laboratorium Pengolahan Pangan</li>
+                    <li>Laboratorium Mikrobiologi Pangan</li>
+                    <li>Laboratorium Kimia Pangan</li>
+                    <li>Pilot Plant untuk produksi skala menengah</li>
+                    <li>Perpustakaan dengan koleksi referensi lengkap</li>
+                    <li>Ruang inkubator bisnis untuk mahasiswa entrepreneur</li>
+                </ul>
+
+                <h2>Penutup</h2>
+                <p>
+                    Program Studi Teknologi Pangan S1 Universitas Ma'soem adalah pilihan tepat bagi Anda yang ingin berkarir di industri pangan yang terus berkembang. Dengan kurikulum yang komprehensif, fasilitas lengkap, dan orientasi entrepreneurship, kami siap mencetak lulusan yang tidak hanya mampu bekerja, tetapi juga menciptakan lapangan kerja.
+                </p>
+                <p>
+                    Bergabunglah dengan kami dan wujudkan impian Anda menjadi profesional di bidang teknologi pangan yang berkarakter unggul: Cageur, Bageur, dan Pinter!
+                </p>
+            </div>
+
+            <div class="share-section">
+                <h3>Bagikan Artikel Ini</h3>
+                <div class="share-buttons">
+                    <a href="#" class="share-btn facebook">📘 Facebook</a>
+                    <a href="#" class="share-btn twitter">🐦 Twitter</a>
+                    <a href="#" class="share-btn whatsapp">💬 WhatsApp</a>
+                    <a href="#" class="share-btn linkedin">💼 LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="related-news">
+                <h3>Berita Terkait</h3>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <h4>Agribisnis S1: Inovasi untuk Masa Depan Pertanian</h4>
+                        <p>Program studi yang menggabungkan pertanian dengan bisnis modern...</p>
+                        <a href="#">Baca Selengkapnya →</a>
+                    </div>
+                    <div class="related-card">
+                        <h4>Digital Business S1: Membangun Masa Depan Digital</h4>
+                        <p>Kuasai keterampilan e-commerce dan digital marketing...</p>
+                        <a href="#">Baca Selengkapnya →</a>
+                    </div>
+                    <div class="related-card">
+                        <h4>Teknik Informatika: Talenta Digital Era 4.0</h4>
+                        <p>Menjadi developer handal di era revolusi industri 4.0...</p>
+                        <a href="#">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <section class="partners-section">
+    <h3>Partnered With</h3>
+    <div class="partners-grid">
+        <div class="partner-logo">
+            <img src="image/masoem.png" alt="AI Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/apotek.png" alt="Koperasi Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/arias.png" alt="Ma'soem Guesthouse">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bpr.png" alt="Yayasan Almasoem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/corp.png" alt="TRYOUT.ID">
+        </div>
+        <div class="partner-logo">
+            <img src="image/mes.png" alt="Gardu BSI">
+        </div>
+        <div class="partner-logo">
+            <img src="image/cisco.png" alt="MES Muhammadiyah">
+        </div>
+        <div class="partner-logo">
+            <img src="image/ib.png" alt="CISCO Academy">
+        </div>
+        <div class="partner-logo">
+            <img src="image/to.png" alt="iB University">
+        </div>
+        <div class="partner-logo">
+            <img src="image/kai.png" alt="LA Partner">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bjbb-removebg-preview.png" alt="LA Partner">
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-about">
+                <h3>Ma'soem University</h3>
+                <div class="footer-address">
+                    <span class="icon">📍</span>
+                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <p>Telp: 0819 1123 2333</p>
+                        <p>WA: 081903833092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶️</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Studi - Universitas Ma'soem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+
+              /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #0052CC;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+        /* Program Selector */
+        .program-selector {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+        }
+
+        .selector-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .selector-container label {
+            font-weight: 600;
+            color: #0052CC;
+        }
+
+        .selector-container select {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #0052CC;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: white;
+            min-width: 300px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 89, 255, 0.95) 0%, rgba(0, 70, 136, 0.95) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .badge {
+            background: white;
+            color: #0052CC;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-section h2 {
+            color: #0052CC;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #e8f0fe;
+        }
+
+        .content-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .content-section ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .content-section ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+        }
+
+        .content-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #0052CC;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 4px solid #0052CC;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h3 {
+            color: #0052CC;
+            margin-bottom: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-top: 3px solid #0052CC;
+        }
+
+        .card h3 {
+            color: #0052CC;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: #0052CC;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+               /* Partners Section */
+        .partners-section {
+            background: #0052CC;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .partners-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .partners-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: #7BD3EA;
+            padding: 1.5rem;
+            border-radius: 10px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background: #2b2b2b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-address {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-address .icon {
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-address p {
+            margin: 0;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-contact h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item .icon {
+            color: #0052CC;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-social h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #404040;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #0052CC;
+            transform: translateY(-3px);
+        }
+
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            overflow: hidden; /* agar gambar tidak keluar dari kotak */
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* supaya proporsi QR tetap benar */
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #404040;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* ========================= */
+/*     RESPONSIVE LAYOUT     */
+/* ========================= */
+
+@media (max-width: 1200px) {
+  nav {
+    padding: 0 1.5rem;
+  }
+  .container {
+    padding: 2rem 1.5rem;
+  }
+  .partners-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet mode */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .partner-logo {
+    height: 90px;
+    padding: 1rem;
+  }
+
+  .qr-code {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Mobile mode */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .program-selector {
+    padding: 1rem;
+  }
+
+  .selector-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .cta-box {
+    padding: 2rem 1rem;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-address,
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .qr-code {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Extra small devices (HP kecil) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .cta-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .qr-code {
+    width: 90px;
+    height: 90px;
+  }
+
+  .partner-logo {
+    height: 80px;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="salam-rektor.html">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="#fakultas">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <div class="program-selector">
+    <div class="selector-container">
+        <label for="prodiSelect">Pilih Program Studi:</label>
+        <select id="prodiSelect">
+            <option value="">-- Pilih Program Studi --</option>
+            <option value="informatika">Teknik Informatika (S1)</option>
+            <option value="sistem-informasi">Sistem Informasi (S1)</option>
+            <option value="digital-business">Digital Business (S1)</option>
+            <option value="perbankan-syariah">Perbankan Syariah (S1)</option>
+            <option value="manajemen-bisnis">Manajemen Bisnis Syariah (S1)</option>
+            <option value="agribisnis">Agribisnis (S1)</option>
+            <option value="teknologi-pangan">Teknologi Pangan (S1)</option>
+            <option value="bimbingan-konseling">Bimbingan dan Konseling (S1)</option>
+            <option value="pendidikan-inggris">Pendidikan Bahasa Inggris (S1)</option>
+            <option value="teknik-industri">Teknik Industri (S1)</option>
+            <option value="komputerisasi-akuntansi">Komputerisasi Akuntansi (D3)</option>
+        </select>
+    </div>
+</div>
+
+
+    <!-- TEKNIK INFORMATIKA -->
+    <div id="informatika" class="page-content active">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Teknik Informatika</h1>
+            <p>Fakultas Teknik</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Informatika (S1) di Universitas Ma'soem memiliki peran fundamental dalam menghadapi Revolusi Industri 4.0 dan tantangan global yang menuntut penguasaan teknologi informasi tingkat tinggi. Kami fokus mencetak Sumber Daya Manusia (SDM) yang mampu menguasai dan memanfaatkan teknologi mutakhir, mulai dari pengembangan start-up digital, Big Data, hingga Artificial Intelligence.</p>
+                <p>Kurikulum yang kami tawarkan unggul dalam bidang Analisis Permasalahan, Jaringan Komputer, Data Science, dan Pengembangan Aplikasi Penunjang industri. Pendidikan yang diselenggarakan berlandaskan nilai-nilai religius dan nasionalisme, memastikan setiap lulusan berkarakter Cageur, Bageur dan Pinter (Sehat, Baik, dan Pintar) serta berorientasi entrepreneurship.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi Program Studi bermutu tinggi yang memiliki daya saing tinggi, inovatif, kreatif, dan mengikuti perkembangan teknologi informasi dengan karakter cageur, bageur dan pinter yang berorientasi entrepreneurship."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Misi</h2>
+                <ul>
+                    <li>Menyelenggarakan pendidikan sarjana Informatika yang unggul dalam bidang Analisa Permasalahan, Jaringan Komputer, Data Science dan Pengembangan Aplikasi Penunjang industri berbasis nilai-nilai religius dan nasionalisme.</li>
+                    <li>Menyelenggarakan penelitian dasar dan terapan yang mendukung kemajuan teknologi informasi dan perkembangan industri lokal, nasional dan global.</li>
+                    <li>Menyelenggarakan pengabdian kepada masyarakat melalui jasa konsultasi, pelatihan dan pelayanan teknis sektor Informatika / IT.</li>
+                    <li>Membina hubungan kerjasama dan kemitraan yang berkelanjutan dengan instansi pemerintah, dunia usaha, industri dan pendidikan tinggi.</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Analis & Developer</strong> untuk Intelligent & Interactive Systems</li>
+                    <li><strong>Spesialis Basis Data</strong></li>
+                    <li><strong>IT Bidang Medis & Kesehatan</strong></li>
+                    <li><strong>Game Developer</strong></li>
+                    <li><strong>Konsultan Sistem Informasi</strong></li>
+                    <li><strong>Technopreneur</strong> di Bidang Pengembangan Peranti Lunak</li>
+                    <li><strong>Akademisi di Bidang IT</strong> (Dosen dan/atau Peneliti)</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Tertarik Bergabung?</h3>
+                <p>Daftar sekarang dan mulai perjalanan karirmu di bidang Teknologi Informasi</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SISTEM INFORMASI -->
+    <div id="sistem-informasi" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Sistem Informasi</h1>
+            <p>Fakultas Komputer</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Sistem Informasi mempersiapkan mahasiswa dengan pemahaman mendalam tentang pengembangan perangkat lunak, manajemen database, analisis sistem, keamanan informasi, dan teknologi jaringan. Program ini dirancang untuk menghasilkan profesional IT yang mampu merancang, mengembangkan, dan mengelola sistem informasi organisasi.</p>
+                <p>Lulusan memiliki keterampilan yang dapat diterapkan di berbagai bidang pekerjaan, baik dalam perusahaan teknologi maupun industri lain yang membutuhkan keahlian dalam pengelolaan informasi. Dengan pendekatan praktis dan berbasis proyek, mahasiswa dipersiapkan untuk menghadapi tantangan nyata di dunia industri.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Sistem Informasi yang unggul dalam menghasilkan lulusan berkompeten di bidang teknologi informasi dan sistem informasi berbasis entrepreneurship dengan karakter Cageur, Bageur, dan Pinter."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>💻 Kurikulum Industri</h3>
+                        <p>Kurikulum disesuaikan dengan kebutuhan industri IT modern dengan fokus pada pengembangan aplikasi dan manajemen data</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔐 Keamanan Informasi</h3>
+                        <p>Pembelajaran mendalam tentang cyber security dan perlindungan data organisasi</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Business Intelligence</h3>
+                        <p>Kemampuan menganalisis data bisnis untuk pengambilan keputusan strategis</p>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 Project-Based Learning</h3>
+                        <p>Pembelajaran berbasis proyek nyata dengan kerjasama industri</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>System Analyst</strong> - Menganalisis dan merancang sistem informasi organisasi</li>
+                    <li><strong>Software Developer</strong> - Mengembangkan aplikasi dan sistem perangkat lunak</li>
+                    <li><strong>Database Administrator</strong> - Mengelola dan mengoptimalkan database perusahaan</li>
+                    <li><strong>IT Security Specialist</strong> - Mengamankan sistem informasi dari ancaman cyber</li>
+                    <li><strong>Business Analyst</strong> - Menganalisis kebutuhan bisnis dan solusi IT</li>
+                    <li><strong>Project Manager IT</strong> - Mengelola proyek pengembangan sistem informasi</li>
+                    <li><strong>IT Consultant</strong> - Memberikan konsultasi solusi teknologi untuk organisasi</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Bergabunglah dengan Kami!</h3>
+                <p>Mulai karir cemerlang di bidang Sistem Informasi</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIGITAL BUSINESS -->
+    <div id="digital-business" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Digital Business</h1>
+            <p>Fakultas Komputer</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Digital Business mengajarkan mahasiswa tentang berbagai aspek bisnis yang terkait dengan teknologi, termasuk e-commerce, digital marketing, analisis data, teknologi informasi, dan strategi bisnis digital. Program ini dirancang untuk menghasilkan profesional yang mampu mengelola dan mengembangkan bisnis di era digital.</p>
+                <p>Lulusan memiliki pemahaman mendalam tentang transformasi digital, strategi pemasaran online, manajemen platform digital, dan analisis data untuk pengambilan keputusan bisnis. Dengan kombinasi keterampilan teknologi dan bisnis, lulusan siap menjadi leader di era industri 4.0.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Digital Business terdepan yang menghasilkan lulusan berkompeten dalam mengelola dan mengembangkan bisnis digital dengan jiwa entrepreneurship dan karakter Cageur, Bageur, Pinter."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🛍️ E-Commerce Mastery</h3>
+                        <p>Pemahaman mendalam tentang marketplace, online store, dan platform digital</p>
+                    </div>
+                    <div class="card">
+                        <h3>📱 Digital Marketing</h3>
+                        <p>Strategi marketing modern: SEO, SEM, Social Media, Content Marketing</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Data Analytics</h3>
+                        <p>Analisis data untuk insight bisnis dan strategi pemasaran</p>
+                    </div>
+                    <div class="card">
+                        <h3>💼 Business Strategy</h3>
+                        <p>Pengembangan strategi bisnis digital dan transformasi digital</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Digital Marketing Specialist</strong> - Mengelola kampanye pemasaran digital</li>
+                    <li><strong>E-Commerce Manager</strong> - Mengelola platform e-commerce dan marketplace</li>
+                    <li><strong>Social Media Manager</strong> - Mengelola strategi media sosial perusahaan</li>
+                    <li><strong>Business Analyst</strong> - Menganalisis data bisnis untuk strategi</li>
+                    <li><strong>Digital Content Creator</strong> - Menciptakan konten digital yang engaging</li>
+                    <li><strong>SEO/SEM Specialist</strong> - Optimasi mesin pencari dan iklan digital</li>
+                    <li><strong>Digital Entrepreneur</strong> - Memulai dan mengelola bisnis digital sendiri</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Raih Masa Depan Digital!</h3>
+                <p>Jadilah bagian dari revolusi bisnis digital</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERBANKAN SYARIAH -->
+    <div id="perbankan-syariah" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Perbankan Syariah</h1>
+            <p>Fakultas Ekonomi Bisnis Islam</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Perbankan Syariah dirancang untuk menghasilkan profesional di bidang perbankan dan keuangan Islam yang memahami prinsip-prinsip syariah dalam transaksi ekonomi. Mahasiswa akan mempelajari prinsip-prinsip ekonomi Islam, instrumen keuangan syariah, manajemen risiko syariah, hukum perbankan syariah, dan praktik perbankan modern.</p>
+                <p>Lulusan memiliki pemahaman mendalam mengenai prinsip ekonomi Islam dan dapat menerapkannya dalam praktik di dunia perbankan. Dengan pertumbuhan industri keuangan syariah yang pesat di Indonesia dan global, lulusan memiliki prospek karir yang sangat cerah.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Perbankan Syariah yang unggul dalam menghasilkan lulusan profesional di bidang perbankan dan keuangan syariah berbasis nilai-nilai Islam dengan karakter Cageur, Bageur, Pinter dan jiwa entrepreneurship."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🕌 Prinsip Syariah</h3>
+                        <p>Pemahaman mendalam tentang ekonomi Islam dan aplikasinya</p>
+                    </div>
+                    <div class="card">
+                        <h3>💳 Praktik Perbankan</h3>
+                        <p>Pembelajaran praktis tentang operasional bank syariah modern</p>
+                    </div>
+                    <div class="card">
+                        <h3>⚖️ Hukum Syariah</h3>
+                        <p>Penguasaan fiqh muamalah dan regulasi keuangan syariah</p>
+                    </div>
+                    <div class="card">
+                        <h3>📈 Manajemen Risiko</h3>
+                        <p>Teknik manajemen risiko dalam lembaga keuangan syariah</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Banker Syariah</strong> - Bekerja di bank syariah sebagai account officer, teller, atau marketing</li>
+                    <li><strong>Analis Keuangan Syariah</strong> - Menganalisis produk dan investasi syariah</li>
+                    <li><strong>Auditor Syariah</strong> - Melakukan audit pada lembaga keuangan syariah</li>
+                    <li><strong>Konsultan Keuangan Syariah</strong> - Memberikan konsultasi keuangan berbasis syariah</li>
+                    <li><strong>Risk Management Officer</strong> - Mengelola risiko di lembaga keuangan syariah</li>
+                    <li><strong>Pegawai OJK/BI</strong> - Bekerja di regulator sektor keuangan syariah</li>
+                    <li><strong>Entrepreneur Syariah</strong> - Mengembangkan bisnis berbasis syariah</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Bergabunglah dengan Ekonomi Syariah!</h3>
+                <p>Bangun karir cemerlang di industri keuangan syariah yang berkembang pesat</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANAJEMEN BISNIS SYARIAH -->
+    <div id="manajemen-bisnis" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Manajemen Bisnis Syariah</h1>
+            <p>Fakultas Ekonomi Bisnis Islam</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Manajemen Bisnis Syariah mempersiapkan mahasiswa dengan pengetahuan mengenai prinsip ekonomi Islam, manajemen keuangan syariah, hukum bisnis syariah, dan produk keuangan berbasis syariah yang dapat diterapkan di berbagai perusahaan konvensional maupun syariah.</p>
+                <p>Lulusan dapat bekerja di perusahaan konvensional yang mengimplementasikan prinsip-prinsip ekonomi Islam dalam operasionalnya. Banyak perusahaan multinasional maupun perusahaan lokal mulai menerapkan prinsip syariah dalam bisnis mereka, sehingga permintaan akan lulusan manajemen bisnis syariah semakin meningkat.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Manajemen Bisnis Syariah terkemuka yang menghasilkan lulusan profesional dalam mengelola bisnis berbasis prinsip syariah dengan karakter Cageur, Bageur, Pinter dan jiwa entrepreneurship."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>📊 Manajemen Modern</h3>
+                        <p>Kombinasi manajemen bisnis modern dengan prinsip syariah</p>
+                    </div>
+                    <div class="card">
+                        <h3>🕌 Etika Bisnis Islam</h3>
+                        <p>Penerapan nilai-nilai Islam dalam praktik bisnis</p>
+                    </div>
+                    <div class="card">
+                        <h3>💼 Keuangan Syariah</h3>
+                        <p>Penguasaan instrumen dan produk keuangan syariah</p>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 Entrepreneurship</h3>
+                        <p>Pengembangan bisnis syariah dan startup halal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Business Development Manager</strong> - Mengembangkan bisnis berbasis syariah</li>
+                    <li><strong>Sharia Compliance Officer</strong> - Memastikan operasional sesuai prinsip syariah</li>
+                    <li><strong>Marketing Manager</strong> - Mengelola pemasaran produk/jasa syariah</li>
+                    <li><strong>Financial Analyst</strong> - Menganalisis keuangan berbasis syariah</li>
+                    <li><strong>CSR Manager</strong> - Mengelola program tanggung jawab sosial perusahaan</li>
+                    <li><strong>Entrepreneur</strong> - Membangun bisnis berbasis prinsip syariah</li>
+                    <li><strong>Consultant</strong> - Konsultan bisnis dan manajemen syariah</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Wujudkan Bisnis Berkah!</h3>
+                <p>Jadilah pemimpin bisnis yang berintegritas dengan prinsip syariah</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGRIBISNIS -->
+    <div id="agribisnis" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Agribisnis</h1>
+            <p>Fakultas Pertanian</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Agribisnis mengajarkan cara mengelola usaha pertanian atau peternakan agar mencapai efisiensi dan keuntungan yang maksimal. Mahasiswa diajarkan untuk melakukan analisis pasar, perencanaan produksi, dan strategi pemasaran yang efisien dan efektif dalam sektor pertanian modern.</p>
+                <p>Dengan fokus pada agribisnis berkelanjutan dan teknologi pertanian modern, lulusan dipersiapkan untuk menjadi profesional yang mampu mengembangkan sektor pertanian Indonesia. Program ini menggabungkan ilmu pertanian dengan manajemen bisnis untuk menghasilkan agripreneur yang kompeten.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Agribisnis yang unggul dalam menghasilkan lulusan profesional di bidang agribisnis berkelanjutan dengan karakter Cageur, Bageur, Pinter dan jiwa entrepreneurship yang mampu bersaing di tingkat nasional dan global."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🌱 Pertanian Modern</h3>
+                        <p>Penerapan teknologi dan inovasi dalam pertanian berkelanjutan</p>
+                    </div>
+                    <div class="card">
+                        <h3>📈 Manajemen Agribisnis</h3>
+                        <p>Keterampilan mengelola usaha pertanian secara profesional</p>
+                    </div>
+                    <div class="card">
+                        <h3>🛒 Pemasaran Produk</h3>
+                        <p>Strategi pemasaran produk pertanian ke pasar modern</p>
+                    </div>
+                    <div class="card">
+                        <h3>💼 Entrepreneurship</h3>
+                        <p>Pengembangan jiwa wirausaha di sektor agribisnis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Agribusiness Manager</strong> - Mengelola perusahaan agribisnis</li>
+                    <li><strong>Agricultural Marketing Specialist</strong> - Pemasaran produk pertanian</li>
+                    <li><strong>Supply Chain Manager</strong> - Mengelola rantai pasok pertanian</li>
+                    <li><strong>Farm Manager</strong> - Mengelola perkebunan dan pertanian</li>
+                    <li><strong>Agricultural Consultant</strong> - Konsultan agribisnis</li>
+                    <li><strong>Peneliti Pertanian</strong> - Riset dan pengembangan pertanian</li>
+                    <li><strong>Agripreneur</strong> - Wirausaha di bidang pertanian modern</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Bangun Masa Depan Pertanian!</h3>
+                <p>Jadilah bagian dari transformasi sektor agribisnis Indonesia</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEKNOLOGI PANGAN -->
+    <div id="teknologi-pangan" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Teknologi Pangan</h1>
+            <p>Fakultas Pertanian</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Teknologi Pangan mempelajari proses pembuatan produk pangan yang efisien dan inovatif. Keahlian lulusan teknologi pangan sangat dibutuhkan di berbagai industri, mulai dari perusahaan makanan dan minuman, institusi riset, hingga menjadi pengusaha di bidang pangan.</p>
+                <p>Dengan fokus pada keamanan pangan, inovasi produk, dan teknologi pengolahan modern, lulusan dipersiapkan untuk menjadi profesional yang mampu mengembangkan industri pangan Indonesia dengan standar kualitas internasional.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Teknologi Pangan yang unggul dalam menghasilkan lulusan profesional di bidang teknologi pangan dengan inovasi, keamanan pangan, dan karakter Cageur, Bageur, Pinter serta jiwa entrepreneurship."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🔬 Teknologi Pengolahan</h3>
+                        <p>Penguasaan teknologi modern dalam pengolahan pangan</p>
+                    </div>
+                    <div class="card">
+                        <h3>🛡️ Keamanan Pangan</h3>
+                        <p>Pemahaman standar keamanan dan kualitas pangan</p>
+                    </div>
+                    <div class="card">
+                        <h3>💡 Inovasi Produk</h3>
+                        <p>Pengembangan produk pangan inovatif dan fungsional</p>
+                    </div>
+                    <div class="card">
+                        <h3>✅ Quality Control</h3>
+                        <p>Sistem kontrol kualitas dan sertifikasi pangan</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Food Technologist</strong> - Mengembangkan produk pangan</li>
+                    <li><strong>Quality Control Manager</strong> - Mengelola kualitas produk pangan</li>
+                    <li><strong>Product Development Specialist</strong> - Riset dan inovasi produk</li>
+                    <li><strong>Food Safety Officer</strong> - Memastikan keamanan pangan</li>
+                    <li><strong>Production Manager</strong> - Mengelola produksi pangan</li>
+                    <li><strong>Peneliti Pangan</strong> - Riset di institusi atau universitas</li>
+                    <li><strong>Food Entrepreneur</strong> - Wirausaha industri makanan dan minuman</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Ciptakan Inovasi Pangan!</h3>
+                <p>Bergabunglah dalam mengembangkan industri pangan Indonesia</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BIMBINGAN DAN KONSELING -->
+    <div id="bimbingan-konseling" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Bimbingan dan Konseling</h1>
+            <p>Fakultas Keguruan dan Ilmu Pendidikan</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Bimbingan dan Konseling mempersiapkan mahasiswa dengan keahlian dalam melakukan asesmen psikologis untuk membantu individu mengatasi masalah pribadi, profesional, dan akademis. Program ini menghasilkan konselor profesional yang kompeten dalam memberikan layanan bimbingan dan konseling.</p>
+                <p>Dengan pendekatan humanistik dan berbasis kompetensi, lulusan memiliki keterampilan komunikasi, empati, dan keahlian bimbingan konseling yang sangat dibutuhkan di berbagai institusi pendidikan, industri, dan organisasi.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Bimbingan dan Konseling yang unggul dalam menghasilkan konselor profesional dengan kompetensi akademik dan praktis berbasis nilai-nilai humanistik dengan karakter Cageur, Bageur, Pinter."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🧠 Psikologi Praktis</h3>
+                        <p>Pemahaman mendalam tentang psikologi dan perilaku manusia</p>
+                    </div>
+                    <div class="card">
+                        <h3>💬 Teknik Konseling</h3>
+                        <p>Penguasaan berbagai teknik dan pendekatan konseling</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Asesmen Psikologis</h3>
+                        <p>Keterampilan melakukan tes dan asesmen psikologi</p>
+                    </div>
+                    <div class="card">
+                        <h3>👥 Bimbingan Karir</h3>
+                        <p>Membantu individu dalam pengembangan karir</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Konselor Sekolah</strong> - Memberikan layanan BK di sekolah</li>
+                    <li><strong>Konselor Pendidikan</strong> - Konseling di perguruan tinggi</li>
+                    <li><strong>HR Development</strong> - Pengembangan SDM di perusahaan</li>
+                    <li><strong>Career Counselor</strong> - Konsultan pengembangan karir</li>
+                    <li><strong>Psikolog Trainee</strong> - Melanjutkan ke profesi psikolog</li>
+                    <li><strong>Trainer</strong> - Pelatihan pengembangan diri dan soft skills</li>
+                    <li><strong>Praktisi Konseling</strong> - Membuka praktik konseling mandiri</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Jadilah Konselor Profesional!</h3>
+                <p>Bantu orang lain menemukan jalan terbaik dalam hidup mereka</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENDIDIKAN BAHASA INGGRIS -->
+    <div id="pendidikan-inggris" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Pendidikan Bahasa Inggris</h1>
+            <p>Fakultas Keguruan dan Ilmu Pendidikan</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Pendidikan Bahasa Inggris merupakan salah satu program studi yang menawarkan keahlian sangat dibutuhkan di era globalisasi dan perkembangan teknologi saat ini. Lulusan memiliki kompetensi mengajar bahasa Inggris dan berkomunikasi dalam konteks internasional.</p>
+                <p>Dengan pendekatan komunikatif dan berbasis teknologi, mahasiswa dipersiapkan untuk menjadi pendidik bahasa Inggris profesional atau bekerja di berbagai bidang yang membutuhkan kemampuan bahasa Inggris tingkat tinggi.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Pendidikan Bahasa Inggris yang unggul dalam menghasilkan pendidik dan profesional bahasa Inggris yang kompeten dengan karakter Cageur, Bageur, Pinter dan mampu bersaing di tingkat global."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🗣️ English Proficiency</h3>
+                        <p>Penguasaan bahasa Inggris aktif dan pasif tingkat mahir</p>
+                    </div>
+                    <div class="card">
+                        <h3>📚 Teaching Methods</h3>
+                        <p>Metodologi pengajaran bahasa modern dan efektif</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Global Competence</h3>
+                        <p>Pemahaman budaya dan komunikasi lintas budaya</p>
+                    </div>
+                    <div class="card">
+                        <h3>💻 EdTech Integration</h3>
+                        <p>Penggunaan teknologi dalam pembelajaran bahasa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Guru Bahasa Inggris</strong> - Mengajar di sekolah atau lembaga pendidikan</li>
+                    <li><strong>English Trainer</strong> - Pelatihan bahasa di perusahaan atau kursus</li>
+                    <li><strong>Translator/Interpreter</strong> - Penerjemah dokumen atau lisan</li>
+                    <li><strong>Content Writer</strong> - Penulis konten berbahasa Inggris</li>
+                    <li><strong>International Relations Officer</strong> - Hubungan internasional</li>
+                    <li><strong>Customer Service International</strong> - Layanan pelanggan global</li>
+                    <li><strong>Diplomat</strong> - Kementerian Luar Negeri</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Master English, Master The World!</h3>
+                <p>Buka peluang karir global dengan kemampuan bahasa Inggris</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEKNIK INDUSTRI -->
+    <div id="teknik-industri" class="page-content">
+        <div class="hero">
+            <span class="badge">S1 - Sarjana</span>
+            <h1>Teknik Industri</h1>
+            <p>Fakultas Teknik</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Teknik Industri mengajarkan mahasiswa tentang perencanaan dan pengendalian produksi, manajemen rantai pasok, perancangan sistem kerja, ergonomi, analisis dan perancangan sistem, serta teknik pengambilan keputusan untuk optimalisasi proses industri.</p>
+                <p>Lulusan Teknik Industri memiliki peluang kerja yang sangat luas di berbagai bidang industri mulai dari manufaktur, logistik, konsultan manajemen, hingga start-up teknologi. Dengan keterampilan yang multidisipliner, lulusan siap menghadapi tantangan industri modern.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Teknik Industri yang unggul dalam menghasilkan lulusan profesional di bidang sistem industri dan manufaktur dengan karakter Cageur, Bageur, Pinter dan jiwa entrepreneurship yang mampu bersaing global."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🏭 Sistem Produksi</h3>
+                        <p>Optimalisasi proses produksi dan manufaktur</p>
+                    </div>
+                    <div class="card">
+                        <h3>📦 Supply Chain</h3>
+                        <p>Manajemen rantai pasok dan logistik modern</p>
+                    </div>
+                    <div class="card">
+                        <h3>⚙️ Lean & Six Sigma</h3>
+                        <p>Metodologi peningkatan kualitas dan efisiensi</p>
+                    </div>
+                    <div class="card">
+                        <h3>👷 Ergonomi & K3</h3>
+                        <p>Kesehatan dan keselamatan kerja industri</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Production Manager</strong> - Mengelola proses produksi pabrik</li>
+                    <li><strong>Supply Chain Manager</strong> - Mengelola rantai pasok perusahaan</li>
+                    <li><strong>Quality Assurance Manager</strong> - Memastikan kualitas produk</li>
+                    <li><strong>Industrial Consultant</strong> - Konsultan efisiensi industri</li>
+                    <li><strong>Process Engineer</strong> - Optimalisasi proses produksi</li>
+                    <li><strong>Operations Manager</strong> - Mengelola operasional perusahaan</li>
+                    <li><strong>Entrepreneur</strong> - Membangun start-up atau industri sendiri</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Optimalkan Industri Masa Depan!</h3>
+                <p>Jadilah engineer yang mampu meningkatkan efisiensi industri</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KOMPUTERISASI AKUNTANSI -->
+    <div id="komputerisasi-akuntansi" class="page-content">
+        <div class="hero">
+            <span class="badge">D3 - Diploma</span>
+            <h1>Komputerisasi Akuntansi</h1>
+            <p>Fakultas Komputer</p>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2>Tentang Program Studi</h2>
+                <p>Program Studi Komputerisasi Akuntansi mempersiapkan mahasiswa dengan keahlian mengelola data, menganalisis informasi keuangan, dan menggunakan perangkat lunak akuntansi maupun sistem informasi akuntansi. Program ini menggabungkan akuntansi dengan teknologi informasi.</p>
+                <p>Di era digital ini, banyak perusahaan membutuhkan tenaga ahli yang dapat mengelola data keuangan mereka secara efisien menggunakan teknologi informasi. Lulusan memiliki peluang luas untuk bekerja di berbagai bidang profesi terkait akuntansi dan teknologi informasi.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Visi</h2>
+                <div class="highlight-box">
+                    <p>"Menjadi program studi Komputerisasi Akuntansi yang unggul dalam menghasilkan lulusan ahli madya di bidang akuntansi berbasis teknologi informasi dengan karakter Cageur, Bageur, Pinter dan siap kerja."</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Keunggulan Program Studi</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>💻 Software Akuntansi</h3>
+                        <p>Penguasaan MYOB, SAP, Accurate, dan software akuntansi lainnya</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Sistem Informasi</h3>
+                        <p>Pemahaman sistem informasi akuntansi perusahaan</p>
+                    </div>
+                    <div class="card">
+                        <h3>📈 Analisis Keuangan</h3>
+                        <p>Kemampuan menganalisis laporan keuangan digital</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎓 Siap Kerja</h3>
+                        <p>Program 3 tahun fokus pada keterampilan praktis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Prospek Karir</h2>
+                <ul>
+                    <li><strong>Staff Akuntansi</strong> - Mengelola pembukuan perusahaan</li>
+                    <li><strong>Finance Staff</strong> - Administrasi keuangan</li>
+                    <li><strong>Tax Officer</strong> - Mengelola perpajakan perusahaan</li>
+                    <li><strong>Accounting System Analyst</strong> - Analisis sistem akuntansi</li>
+                    <li><strong>Internal Auditor</strong> - Audit internal perusahaan</li>
+                    <li><strong>Accounting Software Specialist</strong> - Spesialis software akuntansi</li>
+                    <li><strong>Entrepreneur</strong> - Konsultan atau jasa pembukuan</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Kuasai Akuntansi Digital!</h3>
+                <p>Jadilah ahli akuntansi yang menguasai teknologi informasi</p>
+                <a href="#" class="cta-button">Daftar Sekarang</a>
+                <a href="#" class="cta-button secondary">Download Brosur</a>
+            </div>
+        </div>
+    </div>
+
+      <section class="partners-section">
+    <h3>Partnered With</h3>
+    <div class="partners-grid">
+        <div class="partner-logo">
+            <img src="image/masoem.png" alt="AI Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/apotek.png" alt="Koperasi Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/arias.png" alt="Ma'soem Guesthouse">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bpr.png" alt="Yayasan Almasoem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/corp.png" alt="TRYOUT.ID">
+        </div>
+        <div class="partner-logo">
+            <img src="image/mes.png" alt="Gardu BSI">
+        </div>
+        <div class="partner-logo">
+            <img src="image/cisco.png" alt="MES Muhammadiyah">
+        </div>
+        <div class="partner-logo">
+            <img src="image/ib.png" alt="CISCO Academy">
+        </div>
+        <div class="partner-logo">
+            <img src="image/to.png" alt="iB University">
+        </div>
+        <div class="partner-logo">
+            <img src="image/kai.png" alt="LA Partner">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bjbb-removebg-preview.png" alt="LA Partner">
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-about">
+                <h3>Ma'soem University</h3>
+                <div class="footer-address">
+                    <span class="icon">📍</span>
+                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <p>Telp: 0819 1123 2333</p>
+                        <p>WA: 081903833092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶️</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const selector = document.getElementById("prodiSelect");
+    const sections = document.querySelectorAll(".page-content");
+
+    selector.addEventListener("change", function() {
+        // sembunyikan semua konten
+        sections.forEach(section => section.classList.remove("active"));
+
+        // tampilkan konten yang dipilih
+        const selected = document.getElementById(this.value);
+        if (selected) {
+            selected.classList.add("active");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+});
+</script>
+
+
+</body>
+</html>

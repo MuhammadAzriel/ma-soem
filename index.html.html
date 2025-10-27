@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitas Ma'soem - Universitas Swasta di Bandung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #1e3c72;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1e3c72;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            background: #e8f0fe;
+            color: #0052CC;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h3 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #e8f0fe 0%, #f0f7ff 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #1e3c72;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #555;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Faculties Section */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #0052CC;
+            border-radius: 2px;
+        }
+
+        .faculties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .faculty-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #0052CC;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faculty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, transparent 50%, #e8f0fe 50%);
+            opacity: 0.5;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .faculty-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faculty-card h3 {
+            color: #1e3c72;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e8f0fe;
+        }
+
+        .program-list {
+            list-style: none;
+        }
+
+        .program-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        .program-list li:hover {
+            color: #0052CC;
+        }
+
+        .program-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0052CC;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .view-more {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e8f0fe;
+        }
+
+        .view-more a {
+            color: #0052CC;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .view-more a:hover {
+            gap: 1rem;
+        }
+
+        /* Facilities Section */
+        .facilities {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .facilities-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .facility-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .facility-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+/* Partners Section */
+.partners-section {
+    background: #0052CC;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.partners-section h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.partners-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.partner-logo {
+    background: #7BD3EA;
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* Responsif Partner Section */
+@media (max-width: 600px) {
+  .partners-section {
+    padding: 2rem 1rem;
+  }
+
+  .partner-logo {
+    height: 80px;
+    padding: 1rem;
+  }
+}
+
+
+/* Footer */
+footer {
+    background: #2b2b2b;
+    color: white;
+    padding: 3rem 2rem 1rem;
+    width: 100%;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.footer-about h3,
+.footer-contact h3,
+.footer-social h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Alamat */
+.footer-address {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-address .icon {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.footer-address p {
+    margin: 0;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Kontak */
+.contact-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-item .icon {
+    color: #ff4b4b;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+}
+
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: white;
+}
+
+/* Sosial media */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #404040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    background: #0052CC;
+    transform: translateY(-3px);
+}
+
+/* QR code */
+.qr-code {
+    background: white;
+    padding: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1; /* Selalu kotak sempurna */
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.qr-code img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Footer bawah */
+.footer-bottom {
+    border-top: 1px solid #404040;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    padding: 1.5rem 0 0;
+    margin-top: 2rem;
+}
+
+
+/* Responsif */
+@media (max-width: 1024px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .qr-code {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-about h3,
+    .footer-contact h3,
+    .footer-social h3 {
+        font-size: 1.1rem;
+    }
+
+    .qr-code {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 768px) {
+    .qr-code {
+        width: 120px;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-code {
+        width: 100px;
+    }
+}
+
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .faculties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="#salam-rektor">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="#fakultas">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="beranda">
+        <h1>Universitas Ma'soem</h1>
+        <p>Universitas Swasta Terfavorit di Bandung yang Mencetak Mahasiswa Menjadi Pengusaha</p>
+        <div class="cta-buttons">
+            <a href="#fakultas" class="cta-button">Jelajahi Program Studi</a>
+            <a href="#kontak" class="cta-button secondary">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <div class="about-section" id="tentang">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Mengapa Memilih Universitas Ma'soem?</h2>
+                <p>Universitas Ma'soem adalah salah satu universitas swasta di Bandung terfavorit, yang memiliki beberapa fakultas dan jurusan/program studi (prodi) yang unik dan beragam.</p>
+                <p>Dengan berbagai program unggulan untuk mencetak lulusan yang berkualitas, kemudian sistem pembiayaan yang memungkinkan untuk dicicil membuat kami menjadi salah satu universitas swasta yang murah dan berkualitas di Bandung.</p>
+                <p><strong>Kami berbeda!</strong> Kami berusaha mewujudkan mahasiswa menjadi pengusaha sejak berkuliah dengan mendatangkan dosen-dosen tamu dari kalangan pengusaha sukses.</p>
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-text">
+                        <h3>Program Unggulan</h3>
+                        <p>Kurikulum berbasis industri dan kewirausahaan</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-text">
+                        <h3>Biaya Terjangkau</h3>
+                        <p>Sistem pembiayaan yang dapat dicicil</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <div class="feature-text">
+                        <h3>Dosen Praktisi</h3>
+                        <p>Dosen tamu dari kalangan pengusaha sukses</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏢</div>
+                    <div class="feature-text">
+                        <h3>Fasilitas Lengkap</h3>
+                        <p>Asrama putra dan putri dekat kampus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Fakultas</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Program Studi</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">168</span>
+                <span class="stat-label">Kapasitas Asrama Putri</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">48</span>
+                <span class="stat-label">Kapasitas Asrama Putra</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="fakultas">
+        <h2 class="section-title">Fakultas dan Program Studi</h2>
+        <p class="section-subtitle">Pilih program studi yang sesuai dengan minat dan bakatmu untuk meraih masa depan yang cemerlang</p>
+        
+        <div class="faculties-grid">
+            <div class="faculty-card">
+                <div class="faculty-icon">💰</div>
+                <h3>Fakultas Ekonomi Bisnis Islam</h3>
+                <ul class="program-list">
+                    <li>Perbankan Syariah (S1)</li>
+                    <li>Manajemen Bisnis Syariah (S1)</li>
+                </ul>
+                <div class="view-more">
+                    <a href="#perbankan">Lihat Detail →</a>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-icon">💻</div>
+                <h3>Fakultas Komputer</h3>
+                <ul class="program-list">
+                    <li>Sistem Informasi (S1)</li>
+                    <li>Digital Bisnis (S1)</li>
+                    <li>Manajemen Informatika (D3)</li>
+                    <li>Komputerisasi Akuntansi (D3)</li>
+                </ul>
+                <div class="view-more">
+                    <a href="#komputer">Lihat Detail →</a>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-icon">🌾</div>
+                <h3>Fakultas Pertanian</h3>
+                <ul class="program-list">
+                    <li>Agribisnis (S1)</li>
+                    <li>Teknologi Pangan (S1)</li>
+                </ul>
+                <div class="view-more">
+                    <a href="#pertanian">Lihat Detail →</a>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-icon">📚</div>
+                <h3>Fakultas Keguruan dan Ilmu Pendidikan</h3>
+                <ul class="program-list">
+                    <li>Pendidikan Bahasa Inggris (S1)</li>
+                    <li>Bimbingan dan Konseling (S1)</li>
+                </ul>
+                <div class="view-more">
+                    <a href="#pendidikan">Lihat Detail →</a>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-icon">⚙️</div>
+                <h3>Fakultas Teknik</h3>
+                <ul class="program-list">
+                    <li>Teknik Industri (S1)</li>
+                    <li>Teknik Informatika (S1)</li>
+                </ul>
+                <div class="view-more">
+                    <a href="#teknik">Lihat Detail →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="facilities" id="fasilitas">
+        <h2 class="section-title">Fasilitas Kampus</h2>
+        <p class="section-subtitle">Fasilitas lengkap untuk mendukung proses pembelajaran dan kenyamanan mahasiswa</p>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="icon">🏠</div>
+                <h3>Asrama Putri</h3>
+                <p>Kapasitas 168 orang dengan fasilitas lengkap dan aman, berlokasi dekat dengan kampus</p>
+            </div>
+            <div class="facility-card">
+                <div class="icon">🏢</div>
+                <h3>Asrama Putra</h3>
+                <p>Kapasitas 48 orang dengan fasilitas modern dan nyaman untuk mendukung studi</p>
+            </div>
+            <div class="facility-card">
+                <div class="icon">📖</div>
+                <h3>Perpustakaan</h3>
+                <p>Koleksi buku lengkap dan ruang baca yang nyaman untuk mahasiswa</p>
+            </div>
+            <div class="facility-card">
+                <div class="icon">🔬</div>
+                <h3>Laboratorium</h3>
+                <p>Laboratorium modern untuk praktikum berbagai program studi</p>
+            </div>
+            <div class="facility-card">
+                <div class="icon">⚽</div>
+                <h3>Fasilitas Olahraga</h3>
+                <p>Lapangan olahraga untuk menjaga kesehatan dan kebugaran mahasiswa</p>
+            </div>
+            <div class="facility-card">
+                <div class="icon">🍽️</div>
+                <h3>Kantin</h3>
+                <p>Kantin dengan berbagai pilihan makanan sehat dan terjangkau</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="kontak">
+        <h2>Siap Bergabung dengan Universitas Ma'soem?</h2>
+        <p>Wujudkan impianmu menjadi sarjana dan pengusaha sukses bersama kami</p>
+        <div class="cta-buttons">
+            <a href="#" class="cta-button">Daftar Sekarang</a>
+            <a href="#" class="cta-button secondary">Download Brosur</a>
+        </div>
+    </section>
+
+    <section class="partners-section">
+    <h3>Partnered With</h3>
+    <div class="partners-grid">
+        <div class="partner-logo">
+            <img src="image/masoem.png" alt="AI Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/apotek.png" alt="Koperasi Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/arias.png" alt="Ma'soem Guesthouse">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bpr.png" alt="Yayasan Almasoem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/corp.png" alt="TRYOUT.ID">
+        </div>
+        <div class="partner-logo">
+            <img src="image/mes.png" alt="Gardu BSI">
+        </div>
+        <div class="partner-logo">
+            <img src="image/cisco.png" alt="MES Muhammadiyah">
+        </div>
+        <div class="partner-logo">
+            <img src="image/ib.png" alt="CISCO Academy">
+        </div>
+        <div class="partner-logo">
+            <img src="image/to.png" alt="iB University">
+        </div>
+        <div class="partner-logo">
+            <img src="image/kai.png" alt="LA Partner">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bjbb-removebg-preview.png" alt="LA Partner">
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-about">
+                <h3>Ma'soem University</h3>
+                <div class="footer-address">
+                    <span class="icon">📍</span>
+                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <p>Telp: 0819 1123 2333</p>
+                        <p>WA: 081903833092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶️</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

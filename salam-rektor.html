@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salam dari Rektor - Universitas Ma'soem</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+            /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+                /* Dropdown Menu */
+        .nav-links .dropdown {
+        position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 220px;
+        }
+
+        .nav-links .dropdown-menu li a {
+        display: block;
+        padding: 0.7rem 1rem;
+        color: #1e3c72;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links .dropdown-menu li a:hover {
+        background: #f0f4ff;
+        color: #0052CC;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+        }
+
+    /* Hero section */
+    .hero {
+      background: #0052CC;
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Rektor Section */
+    .rektor-section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+      padding: 0 2rem;
+    }
+
+    .rektor-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .rektor-text h2 {
+      color: #0052CC;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .rektor-text p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+/* Partners Section */
+.partners-section {
+    background: #0052CC;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.partners-section h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.partners-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.partner-logo {
+    background: #7BD3EA;
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* Responsif Partner Section */
+@media (max-width: 600px) {
+  .partners-section {
+    padding: 2rem 1rem;
+  }
+
+  .partner-logo {
+    height: 80px;
+    padding: 1rem;
+  }
+}
+
+
+/* Footer */
+footer {
+    background: #2b2b2b;
+    color: white;
+    padding: 3rem 2rem 1rem;
+    width: 100%;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.footer-about h3,
+.footer-contact h3,
+.footer-social h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Alamat */
+.footer-address {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-address .icon {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.footer-address p {
+    margin: 0;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Kontak */
+.contact-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.contact-item .icon {
+    color: #ff4b4b;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+}
+
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: white;
+}
+
+/* Sosial media */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #404040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    background: #0052CC;
+    transform: translateY(-3px);
+}
+
+/* QR code */
+.qr-code {
+    background: white;
+    padding: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1; /* Selalu kotak sempurna */
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.qr-code img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Footer bawah */
+.footer-bottom {
+    border-top: 1px solid #404040;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    padding: 1.5rem 0 0;
+    margin-top: 2rem;
+}
+
+/* Mobile mode */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .program-selector {
+    padding: 1rem;
+  }
+
+  .selector-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .cta-box {
+    padding: 2rem 1rem;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-address,
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .qr-code {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .qr-code {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-about h3,
+    .footer-contact h3,
+    .footer-social h3 {
+        font-size: 1.1rem;
+    }
+
+    .qr-code {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 768px) {
+    .qr-code {
+        width: 120px;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-code {
+        width: 100px;
+    }
+}
+
+    /* Responsif */
+    @media (max-width: 900px) {
+      .rektor-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .rektor-text {
+        margin-top: 2rem;
+      }
+
+      .rektor-text h2 {
+        font-size: 1.7rem;
+      }
+
+      .rektor-text p {
+        text-align: justify;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🎓 Universitas Ma'soem</div>
+            <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#tentang">Tentang Kami ▾</a>
+                <ul class="dropdown-menu">
+                <li><a href="salam-rektor.html">Salam dari Rektor</a></li>
+                <li><a href="profil-yayasan-page.html">Sejarah</a></li>
+                <li><a href="#visi-misi">Visi dan Misi</a></li>
+                </ul>
+            </li>
+            <li><a href="#fakultas">Fakultas</a></li>
+            <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
+            <li><a href="berita-page.html">Berita</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <section class="hero">
+    <h1>Salam dari Rektor</h1>
+    <p>Pesan dan sambutan hangat dari Rektor Universitas Ma'soem</p>
+  </section>
+
+  <section class="rektor-section">
+    <div class="rektor-image">
+      <img src="https://via.placeholder.com/500x600.png?text=Foto+Rektor" alt="Foto Rektor">
+    </div>
+    <div class="rektor-text">
+      <h2>Assalamu’alaikum Warahmatullahi Wabarakatuh</h2>
+      <p>Selamat datang di Universitas Ma’soem, kampus yang menjunjung tinggi nilai-nilai Islam, kejujuran, dan profesionalisme dalam pendidikan. Kami berkomitmen untuk membentuk generasi yang berilmu, berakhlak, dan berdaya saing tinggi di era global ini.</p>
+      <p>Melalui sinergi antara pendidikan akademik dan pembinaan karakter, Universitas Ma’soem berupaya menciptakan lingkungan belajar yang kondusif, inspiratif, dan berorientasi pada pengembangan potensi mahasiswa secara menyeluruh.</p>
+      <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
+      <p><strong>- Rektor Universitas Ma’soem</strong></p>
+    </div>
+  </section>
+
+ <section class="partners-section">
+    <h3>Partnered With</h3>
+    <div class="partners-grid">
+        <div class="partner-logo">
+            <img src="image/masoem.png" alt="AI Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/apotek.png" alt="Koperasi Ma'soem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/arias.png" alt="Ma'soem Guesthouse">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bpr.png" alt="Yayasan Almasoem">
+        </div>
+        <div class="partner-logo">
+            <img src="image/corp.png" alt="TRYOUT.ID">
+        </div>
+        <div class="partner-logo">
+            <img src="image/mes.png" alt="Gardu BSI">
+        </div>
+        <div class="partner-logo">
+            <img src="image/cisco.png" alt="MES Muhammadiyah">
+        </div>
+        <div class="partner-logo">
+            <img src="image/ib.png" alt="CISCO Academy">
+        </div>
+        <div class="partner-logo">
+            <img src="image/to.png" alt="iB University">
+        </div>
+        <div class="partner-logo">
+            <img src="image/kai.png" alt="LA Partner">
+        </div>
+        <div class="partner-logo">
+            <img src="image/bjbb-removebg-preview.png" alt="LA Partner">
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-about">
+                <h3>Ma'soem University</h3>
+                <div class="footer-address">
+                    <span class="icon">📍</span>
+                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <p>Telp: 0819 1123 2333</p>
+                        <p>WA: 081903833092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶️</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+                <div class="qr-code">
+                    <img src="image/qr.jpg" alt="QR Code Universitas Ma'soem">
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
