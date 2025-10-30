@@ -15,8 +15,9 @@
       background: #f8f9fa;
     }
 
-            /* Header & Navigation */
+/* Header & Navigation (Perbaikan: Tambah background agar tidak transparan) */
         header {
+            background: white; /* Perbaikan */
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -42,6 +43,18 @@
             gap: 0.5rem;
         }
 
+        /* Perbaikan: Tombol Hamburger */
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: none;
+            color: #0052CC; /* Warna tombol */
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 150; /* Pastikan di atas nav-links saat aktif */
+        }
+        
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -51,15 +64,31 @@
         .nav-links a {
             color: rgb(0, 0, 0);
             text-decoration: none;
-            transition: opacity 0.3s;
+            position: relative; /* Perbaikan: Untuk underline hover */
+            transition: color 0.3s;
             font-weight: 500;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
+        /* Perbaikan: Underline Hover Effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0052CC;
+            transition: width 0.3s;
         }
 
-                /* Dropdown Menu */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Akhir Perbaikan Underline Hover Effect */
+
+
+        /* Dropdown Menu - Desktop */
         .nav-links .dropdown {
         position: relative;
         }
@@ -77,6 +106,11 @@
         border-radius: 5px;
         min-width: 220px;
         }
+        
+        /* Hilangkan hover underline pada dropdown items */
+        .nav-links .dropdown-menu li a::after {
+            display: none;
+        }
 
         .nav-links .dropdown-menu li a {
         display: block;
@@ -91,6 +125,7 @@
         color: #0052CC;
         }
 
+        /* Tampilkan dropdown saat hover di Desktop */
         .nav-links .dropdown:hover .dropdown-menu {
         display: block;
         }
@@ -340,17 +375,136 @@
             color: #999;
             font-size: 0.9rem;
         }
+        /* Mobile */
+@media (max-width: 600px) {
+          /* Perbaikan: Aturan Menu Mobile */
+            .menu-toggle {
+                display: block; /* Tampilkan tombol hamburger */
+            }
+
+            .nav-links {
+                display: none; /* Sembunyikan menu secara default di mobile */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100px; /* Jarak dari atas (sesuaikan dengan tinggi header) */
+                left: 0;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 1rem 2rem;
+            }
+            
+            /* Kelas yang diaktifkan oleh JavaScript */
+            .nav-links.active { 
+                display: flex; 
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0;
+                display: block;
+            }
+
+            .nav-links a::after {
+                left: 0;
+                transform: translateX(0);
+            }
+            
+            /* Perbaikan Utama: Dropdown Mobile */
+            .nav-links .dropdown:hover .dropdown-menu {
+                display: none; /* Nonaktifkan hover di mobile */
+            }
+
+            .nav-links .dropdown-menu {
+                /* Set tampilan default di mobile menjadi tertutup */
+                display: none; 
+                position: static; /* Ganti dari absolute agar tidak keluar dari aliran dokumen */
+                box-shadow: none;
+                padding-left: 1rem;
+                min-width: unset;
+                background: #f8f9fa; /* Beri warna latar belakang */
+                border-radius: 0;
+            }
+            
+            /* Kelas Baru untuk membuka dropdown di mobile (diaktifkan JS) */
+            .nav-links .dropdown.open .dropdown-menu {
+                display: block; /* Tampilkan menu jika dropdown memiliki kelas 'open' */
+            }
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .news-card {
+        padding: 1.5rem;
+    }
+
+    .partners-section {
+        padding: 2rem 1rem;
+    }
+
+    .partner-logo {
+        height: 80px;
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .qr-code {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding: 1rem 0;
+    }
+}
   </style>
 </head>
 <body>
 
-    <header>
+<header>
         <nav>
             <div class="logo">
             <a href="index.html.html">
-                <img src="image/logo.png" alt="Logo Universitas Ma'soem">
+                <img src="image/logo.png" alt="Logo Universitas Ma'soem" width="150" height="50"> 
             </a>
             </div>
+            <button class="menu-toggle" aria-label="Toggle Navigation">☰</button> 
             <ul class="nav-links">
             <li class="dropdown">
                 <a href="#tentang">Tentang Kami ▾</a>
@@ -373,7 +527,7 @@
                 <li><a href="#">Pengabdian Kepada Masyarakat </a></li>
                 <li><a href="#">Laporan PKM Dosen</a></li>
                 </ul>
-                            <li><a href="https://pmb.masoemuniversity.com/daftar">SIAKAD</a></li>
+            <li><a href="https://siakad.masoemuniversity.com/login">SIAKAD</a></li>
             <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
             <li><a href="berita-page.html">Berita</a></li>
             <li><a href="kontak.html">Kontak Kami</a></li>
@@ -509,6 +663,59 @@
             <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
         </div>
     </footer>   
+ <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Ambil semua elemen <li> dengan kelas 'dropdown'
+            const dropdowns = document.querySelectorAll('.dropdown'); 
 
+            // 1. Logika untuk Hamburger Menu (Mengaktifkan/Menonaktifkan .nav-links)
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 2. Logika untuk Dropdown Mobile (Klik)
+            dropdowns.forEach(dropdown => {
+                // Mendapatkan link utama (anak pertama) dari setiap dropdown
+                const dropdownLink = dropdown.querySelector('a');
+
+                dropdownLink.addEventListener('click', (event) => {
+                    // Hanya jalankan logika toggle jika ini adalah mode mobile (lebar layar <= 768px)
+                    if (window.innerWidth <= 768) {
+                        event.preventDefault(); // Mencegah navigasi link utama
+                        
+                        // Toggle kelas 'open' pada elemen <li>.dropdown
+                        // Ini yang memicu CSS display: block;
+                        dropdown.classList.toggle('open'); 
+                    }
+                });
+            });
+
+            // 3. Opsional: Tutup menu saat link non-dropdown diklik (di mobile)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Pastikan kita menutupnya hanya jika bukan link utama dropdown
+                    const parentLi = link.closest('.dropdown');
+                    const isDropdownItem = link.closest('.dropdown-menu');
+                    
+                    if (window.innerWidth <= 768) {
+                        // Jika yang diklik adalah item di dalam submenu, tutup seluruh menu navigasi
+                        if (isDropdownItem && !parentLi) {
+                             navLinks.classList.remove('active');
+                             dropdowns.forEach(d => d.classList.remove('open'));
+                        }
+                        
+                        // Jika yang diklik adalah link biasa (bukan link dropdown utama/submenu), tutup semua
+                        if (!parentLi && !isDropdownItem) {
+                            navLinks.classList.remove('active');
+                            dropdowns.forEach(d => d.classList.remove('open'));
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
