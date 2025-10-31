@@ -635,7 +635,7 @@
             opacity: 0.95;
         }
 
-        /* Partners Section */
+ /* Partners Section */
         .partners-section {
             background: #0052CC;
             padding: 3rem 2rem;
@@ -681,132 +681,186 @@
             object-fit: contain;
         }
 
-        /* Footer */
-        footer {
-            background: #2b2b2b;
-            color: white;
-            padding: 3rem 2rem 1rem;
-            width: 100%;
-        }
+      /* ==== FOOTER ==== */
+footer {
+  background: #2b2b2b;
+  color: white;
+  padding: 3rem 1.5rem 1rem;
+  width: 100%;
+}
 
-        .footer-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            padding: 0;
-            width: 100%;
-        }
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 
-        .footer-about h3,
-        .footer-contact h3,
-        .footer-social h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.footer-about,
+.footer-contact,
+.footer-social {
+  flex: 1 1 300px;
+  min-width: 260px;
+}
 
-        .footer-address {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
+.footer-about h3,
+.footer-contact h3,
+.footer-social h3 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-        .footer-address .icon {
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
+.footer-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
 
-        .footer-address p {
-            margin: 0;
-            line-height: 1.6;
-            color: #ccc;
-        }
+.footer-address .icon {
+  font-size: 1.3rem;
+  margin-top: 0.2rem;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-        }
+.footer-address p {
+  margin: 0;
+  color: #ccc;
+  line-height: 1.6;
+}
 
-        .contact-item .icon {
-            color: #ff4b4b;
-            font-size: 1.1rem;
-            margin-top: 0.2rem;
-        }
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
 
-        .contact-item a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.contact-item .icon {
+  color: #ff4b4b;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+}
 
-        .contact-item a:hover {
-            color: white;
-        }
+.contact-item a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
+.contact-item a:hover {
+  color: white;
+}
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: #404040;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: background 0.3s, transform 0.3s;
-        }
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
 
-        .social-icon:hover {
-            background: #0052CC;
-            transform: translateY(-3px);
-        }
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #404040;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+}
 
-        .qr-code {
-            background: white;
-            padding: 0.8rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 150px;
-            max-width: 100%;
-            aspect-ratio: 1 / 1; 
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+.social-icon:hover {
+  background: #0052CC;
+  transform: translateY(-3px);
+}
 
-        .qr-code img {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-            object-fit: contain;
-        }
+.qr-code {
+  background: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+  width: 140px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-        .footer-bottom {
-            border-top: 1px solid #404040;
-            text-align: center;
-            color: #999;
-            font-size: 0.9rem;
-            padding: 1.5rem 0 0;
-            margin-top: 2rem;
-            max-width: 1400px;
-            margin: 2rem auto 0;
-        }
+.qr-code img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-bottom {
+  border-top: 1px solid #404040;
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  padding: 1.5rem 0 0;
+  margin-top: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .footer-main {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-contact,
+  .footer-social {
+    flex: 1 1 45%;
+    min-width: 250px;
+  }
+
+  .footer-address,
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .qr-code {
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .footer-main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-contact,
+  .footer-social {
+    width: 100%;
+  }
+
+  .footer-address,
+  .contact-item {
+    justify-content: center;
+  }
+
+  .qr-code {
+    width: 110px;
+  }
+}
+
 
         @media (max-width: 768px) {
             .hero {
@@ -914,41 +968,26 @@
                 display: block;
             }
 
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
+          .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
 
-            .footer-address,
-            .contact-item {
-                justify-content: center;
-            }
+    .footer-address,
+    .contact-item {
+        justify-content: center;
+    }
 
-            .social-icons {
-                justify-content: center;
-            }
+    .social-icons {
+        justify-content: center;
+    }
 
-            .qr-code {
-                margin: 0 auto;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .faculties-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .qr-code {
-                width: 120px;
-                margin: 1rem auto;
-            }
+    .qr-code {
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+    }
         }
 
         @media (max-width: 480px) {
@@ -1389,53 +1428,56 @@
     </div>
 </section>
 
-    <footer>
-        <div class="footer-main">
-            <div class="footer-about">
-                <h3>Ma'soem University</h3>
-                <div class="footer-address">
-                    <span class="icon">📍</span>
-                    <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
-                </div>
-            </div>
+<footer>
+  <div class="footer-main">
+    <div class="footer-about">
+      <h3>Ma'soem University</h3>
+      <div class="footer-address">
+        <span class="icon">📍</span>
+        <p>Jl. Raya Cipacing No. 22 Jatinangor<br>45363 Jawa Barat</p>
+      </div>
+    </div>
 
-            <div class="footer-contact">
-                <h3>Kontak Kami</h3>
-                <div class="contact-item">
-                    <span class="icon">📞</span>
-                    <div>
-                        <p>Telp: 0819 1123 2333</p>
-                        <p>WA: 081903833092</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <span class="icon">✉️</span>
-                    <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
-                </div>
-            </div>
+    <div class="footer-contact">
+      <h3>Kontak Kami</h3>
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <div>
+          <p>Telp: 0819 1123 2333</p>
+          <p>WA: 081903833092</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <p><a href="mailto:info@masoemuniversity.ac.id">info@masoemuniversity.ac.id</a></p>
+      </div>
+    </div>
 
-            <div class="footer-social">
-                    <h3>Media Sosial</h3>
-                    <div class="social-icons">
-                    <a href="https://www.instagram.com/masoem_university/" class="social-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG" width="18">
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCO1VjdbEQokcf2iijBckC7A" class="social-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT" width="18">
-                    </a>
-                    <a href="https://api.whatsapp.com/send/?phone=628156033022" class="social-icon" target="_blank">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA" width="18">
-                    </a>
-                    </div>
-                    <div class="qr-code">
-                    <img src="image/qr.jpg" alt="QR Code">
-                    </div>
-                </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div class="footer-social">
+      <h3>Media Sosial</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/masoem_university/" class="social-icon" aria-label="Instagram">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="18">
+        </a>
+        <a href="https://www.youtube.com/channel/UCO1VjdbEQokcf2iijBckC7A" class="social-icon" aria-label="YouTube">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="18">
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=628156033022" class="social-icon" aria-label="WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="18">
+        </a>
+      </div>
+      <div class="qr-code">
+        <img src="image/qr.jpg" alt="QR Code" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
     
 <script>
         // Carousel functionality
