@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita & Artikel - Universitas Ma'soem</title>
+    <title>Detail Berita - Universitas Ma'soem</title>
     <link rel="icon" href="image/image-removebg-preview.png">
     <style>
         * {
@@ -19,7 +19,7 @@
             background: #f8f9fa;
         }
 
-/* Header & Navigation (Perbaikan: Tambah background agar tidak transparan) */
+ /* Header & Navigation (Perbaikan: Tambah background agar tidak transparan) */
         header {
             background: white; /* Perbaikan */
             color: white;
@@ -133,147 +133,305 @@
         .nav-links .dropdown:hover .dropdown-menu {
         display: block;
         }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 89, 255, 0.95) 0%, rgba(0, 70, 136, 0.95) 100%);
-            color: white;
-            padding: 5rem 2rem 3rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 1400px;
+        .breadcrumb {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 1.5rem 2rem;
+            font-size: 0.95rem;
         }
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .breadcrumb a {
+            color: #0052CC;
+            text-decoration: none;
+            transition: opacity 0.3s;
         }
 
-        .news-card {
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        .breadcrumb span {
+            color: #666;
+            margin: 0 0.5rem;
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
             background: white;
+            padding: 3rem;
             border-radius: 15px;
-            overflow: hidden;
+            margin-bottom: 2rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #e8f0fe;
+            color: #0052CC;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header h1 {
+            color: #0052CC;
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
             display: flex;
-            flex-direction: column;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.95rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
         }
 
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .news-image {
+        .article-image {
+            background: white;
+            padding: 1rem; /* Padding lebih kecil */
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .article-image img {
             width: 100%;
-            height: 200px;
-            /* Hapus properti display: flex, justify-content, color, font-size */
-            background: #e0e0e0; /* Warna latar belakang placeholder abu-abu */
-            position: relative; /* Penting untuk penempatan gambar di dalamnya */
-            overflow: hidden; /* Memastikan gambar tidak keluar dari batas */
+            height: 400px; /* Tinggi yang ditetapkan untuk gambar utama */
+            object-fit: cover; /* Memastikan gambar terpotong sesuai rasio */
+            border-radius: 10px; /* Sudut melengkung untuk gambar */
+            display: block;
         }
 
-        /* Tambahkan aturan baru untuk tag <img> di dalam .news-image */
-        .news-image img {
+        /* --- PERUBAHAN UTAMA: STYLE GAMBAR UTAMA DAN PLACEHOLDER --- */
+        .article-image-placeholder {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Memastikan gambar terpotong agar sesuai tanpa merusak aspek rasio */
-            transition: transform 0.3s;
+            height: 400px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Efek hover agar gambar bergerak sedikit saat mouse diarahkan ke card */
-        .news-card:hover .news-image img {
-            transform: scale(1.05); 
+        /* Gaya untuk tag <img> di dalam .article-image-placeholder */
+        .article-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* OPTIONAL: Tambahkan ini jika Anda ingin placeholder jika img kosong */
-        .news-image:empty {
+        /* Placeholder jika img kosong */
+        .article-image-placeholder:empty {
             background: linear-gradient(135deg, #0052CC 0%, #0052CC 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
+            font-size: 5rem;
         }
-        .news-image:empty::after {
-            content: 'No Image';
+        .article-image-placeholder:empty::after {
+            content: 'No Image Available'; /* Teks placeholder */
+            font-size: 1rem;
+            position: absolute;
+            bottom: 20px;
+            opacity: 0.8;
             font-size: 1rem;
         }
+        /* --- AKHIR PERUBAHAN STYLE GAMBAR --- */
 
-        .news-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .article-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
         }
 
-        .news-category {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: #e8f0fe;
+        .article-content h2 {
             color: #0052CC;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            width: fit-content;
         }
 
-        .news-card h3 {
+        .article-content h3 {
             color: #0052CC;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .news-excerpt {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .article-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
-            flex-grow: 1;
+            text-align: justify;
         }
 
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #f0f0f0;
-            font-size: 0.85rem;
-            color: #999;
+        .article-content ul,
+        .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .read-more {
+        .article-content li {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 5px solid #0052CC;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #444;
+            font-style: italic;
+        }
+
+        .share-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .share-section h3 {
             color: #0052CC;
-            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: gap 0.3s;
         }
 
-        .read-more:hover {
-            gap: 1rem;
+        .share-btn:hover {
+            transform: translateY(-3px);
         }
 
-       /* Partners Section */
+        .share-btn.facebook {
+            background: #1877f2;
+        }
+
+        .share-btn.twitter {
+            background: #1da1f2;
+        }
+
+        .share-btn.whatsapp {
+            background: #25d366;
+        }
+
+        .share-btn.linkedin {
+            background: #0a66c2;
+        }
+
+        .related-news {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .related-news h3 {
+            color: #0052CC;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            border: 1px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .related-card h4 {
+            color: #0052CC;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .related-card a {
+            color: #0052CC;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #0052CC;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        /* Partners Section */
         .partners-section {
             background: #0052CC;
             padding: 3rem 2rem;
@@ -459,28 +617,19 @@
    RESPONSIVE DESIGN
 ===================== */
 
-/* Tablet */
+/* Untuk tablet (lebar ≤ 992px) */
 @media (max-width: 992px) {
 
-    
-
-    .hero {
-        padding: 3rem 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .news-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
+    .article-header, 
+    .article-content, 
+    .share-section, 
+    .related-news {
+        padding: 2rem;
     }
 
     .footer-main {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-        padding: 0 1.5rem;
     }
 
     .partners-grid {
@@ -489,10 +638,9 @@
     }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-
-      /* Perbaikan: Aturan Menu Mobile */
+/* Untuk ponsel (lebar ≤  768px) */
+@media (max-width:  768px) {
+            /* Perbaikan: Aturan Menu Mobile */
             .menu-toggle {
                 display: block; /* Tampilkan tombol hamburger */
             }
@@ -554,21 +702,19 @@
         font-size: 1.4rem;
     }
 
-    .hero {
-        padding: 2.5rem 1rem;
-    }
-
-    .hero h1 {
+    .page-header h1,
+    .article-header h1 {
         font-size: 1.8rem;
     }
 
-    .news-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
-    .news-card {
-        padding: 1.5rem;
+    .article-image-placeholder {
+        height: 250px;
+        font-size: 3rem;
     }
 
     .partners-section {
@@ -578,10 +724,6 @@
     .partner-logo {
         height: 80px;
         padding: 1rem;
-    }
-
-    footer {
-        padding: 2rem 1rem 1rem;
     }
 
     .footer-main {
@@ -599,14 +741,13 @@
     }
 
     .qr-code {
+        margin: 0 auto;
         width: 100px;
         height: 100px;
-        margin: 0 auto;
     }
 
     .footer-bottom {
         font-size: 0.8rem;
-        padding: 1rem 0;
     }
 }
 
@@ -636,117 +777,72 @@
                 <ul class="dropdown-menu">
                 <li><a href="tugas-akhir.html">Tugas Akhir</a></li>
                 </ul>
-            </li> <li class="dropdown">
+                <li class="dropdown">
                 <a href="#tentang">LPPM ▾</a>
                 <ul class="dropdown-menu">
                 <li><a href="jurnal-ilmiah.html">Penelitian</a></li>
                 <li><a href="https://jurnal.masoemuniversity.ac.id/index.php/abdimu">Pengabdian Kepada Masyarakat </a></li>
                 <li><a href="laporanPKM.html">Laporan PKM Dosen</a></li>
                 </ul>
-            </li> <li><a href="https://siakad.masoemuniversity.com/login">SIAKAD</a></li>
+            <li><a href="https://siakad.masoemuniversity.com/login">SIAKAD</a></li>
             <li><a href="https://pmb.masoemuniversity.com/daftar">Pendaftaran</a></li>
             <li><a href="berita-page.html">Berita</a></li>
             <li><a href="kontak.html">Kontak Kami</a></li>
             </ul>
         </nav>
     </header>
-    <div class="hero">
-        <h1>Berita & Artikel</h1>
-        <p>Update terbaru seputar pendidikan, prestasi, dan kegiatan Universitas Ma'soem</p>
+
+    <div class="breadcrumb">
+        <a href="index.html.html">Beranda</a>
+        <span>/</span>
+        <a href="berita.html">Berita</a>
+        <span>/</span>
+        <span style="color: #333;">Detail Berita</span>
     </div>
 
-    <div class="container">
-        <div class="news-grid">
-           <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita 1.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Apa itu S1 Teknologi Pangan? Prospek Kerja dan Masa Depan Pangan</h3>
-                    <p class="news-excerpt">Dunia kita menghadapi tantangan besar terkait pangan — mulai dari kelangkaan, keamanan, hingga inovasi produk yang berkelanjutan....</p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page1.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
+    <div class="article-container">
+        <a href="berita.html" class="back-btn">← Kembali ke Daftar Berita</a>
+
+        <article>
+            <div class="article-header">
+                <span class="article-category">Program Studi</span>
+                <h1>Selain Fakultas Komputer, Agribisnis S1 Universitas Ma’soem di Bandung Cetak Wirausaha & Multi Karir</h1>
+                <div class="article-meta">
+                    <span>📅 31 Oktober 2025</span>
+                    <span>✍️ Admin Universitas</span>
+                    <span>👁️ 978 views</span>
                 </div>
             </div>
 
-                <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita 2.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Prospek Kerja Jurusan Pendidikan Bahasa Inggris S1, Benarkah Hanya Jadi Guru?</h3>
-                    <p class="news-excerpt">Apakah Anda pernah berpikir bahwa lulusan Pendidikan Bahasa Inggris S1 hanya bisa menjadi guru? Pandangan ini sering kali muncul di masyarakat. Namun...</p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page2.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
-                </div>
+           <div class="article-image">
+                <img src="image/berita5.jpg" alt="Gambar Utama Berita Teknologi Pangan">
             </div>
 
-                      <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita 3.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Apa Itu Agribisnis S1 Memahami Jurusan dan Prospek Kerja Cerah</h3>
-                    <p class="news-excerpt">Pernahkah Anda membayangkan betapa vitalnya sektor pangan? Ketersediaan makanan adalah fondasi peradaban. Jurusan Agribisnis S1 hadir sebagai pilihan strategis. Ia bukan sekadar mempelajari pertanian. Jurusan ini adalah...</p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page3.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
-                </div>
-            </div>
+            <div class="article-content">
+                <p>
+                   Apakah Anda memiliki ketertarikan pada sektor pangan dan pertanian, namun ingin terjun ke dunia profesional yang lebih modern dan terstruktur? Program Studi Agribisnis S1 Ma'soem University menawarkan jalur pendidikan yang visioner. Kami bertekad menjadi penyelenggara pendidikan agribisnis terbaik di tingkat nasional pada tahun 2038.
 
-                     <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita4.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Supply Chain dan Logistik Jadi Bekal Mahasiswa Teknik Industri Hadapi Dunia Industri Modern</h3>
-                    <p class="news-excerpt">Di era industri modern yang bergerak cepat, keunggulan sebuah perusahaan tak lagi ditentukan hanya oleh kualitas produk, melainkan oleh seberapa efisien rantai pasoknya dikelola... </p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page4.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
-                </div>
-            </div>
+Tujuannya adalah mencetak lulusan profesional berkarakter dengan filosofi "Cageur, Bageur, Pinter", sekaligus menjadi pilihan tepat karier dalam bidang manajemen rantai pasok yang terus berkembang.
 
-                      <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita5.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Selain Fakultas Komputer, Agribisnis S1 Universitas Ma’soem di Bandung Cetak Wirausaha & Multi Karir</h3>
-                    <p class="news-excerpt">Apakah Anda memiliki ketertarikan pada sektor pangan dan pertanian, namun ingin terjun ke dunia profesional yang lebih modern dan terstruktur? Program Studi Agribisnis S1 di Ma'soem University menawarkan jalur ...</p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page5.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
-                </div>
-            </div>
-           <div class="news-card">
-                <div class="news-image">
-                    <img src="image/berita 6.jpg" alt="Ilustrasi Teknologi Pangan">
-                </div>
-                <div class="news-content">
-                    <span class="news-category">Program Studi</span>
-                    <h3>Panduan Lengkap Memilih Jurusan Informatika S1 dan Prospek Kerjanya</h3>
-                    <p class="news-excerpt">Informatika bukan sekadar mempelajari kode dan komputer. Ia adalah seni mengubah logika menjadi solusi, data menjadi wawasan, dan teknologi menjadi kemajuan bagi manusia...</p>
-                    <div class="news-meta">
-                        <span>📅 25 Oktober 2025</span>
-                        <a href="berita-detail-page6.html" class="read-more">Baca Selengkapnya →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+Visi kami bukan sekadar janji, melainkan komitmen. Kami mempersiapkan Anda untuk menjadi pemimpin dan inovator di bidang agribisnis, dengan karakter sehat, berbudi pekerti luhur, dan cerdas.</p>
+                <h2>Visi Program Studi Agribisnis</h2>
+               <ul>
+                    <li>Menyelenggarakan pendidikan agribisnis terbaik di Indonesia.</li>
+                    <li>Menjangkau komunitas akademik di peringkat nasional.</li>
+                    <li>Menanamkan nilai karakter “Cageur, Bageur, Pinter”.</li>
+                    <li>Menargetkan pencapaian visi pada tahun 2038.</li>
+                </ul>
+                 <h2>Tujuan Program Studi</h2>
+               <ul>
+                    <li>Menghasilkan lulusan kompeten dan kreatif sebagai “problem solver” di bidang agribisnis.</li>
+                    <li>Mendorong penelitian terapan untuk kemajuan sektor agribisnis dari skala kecil hingga besar.</li>
+                    <li>Menerapkan teknologi dan inovasi agribisnis bagi pengembangan pertanian.</li>
+                    <li>Membangun kolaborasi berlandaskan nilai “Cageur, Bageur, Pinter”.</li>
+                </ul>
+
+        </article>
     </div>
+
     <section class="partners-section">
     <h3>Partnered With</h3>
     <div class="partners-grid">
@@ -833,8 +929,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 Universitas Ma'soem. All Rights Reserved.</p>
         </div>
-    </footer>    
-        <script>
+    </footer>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');

@@ -861,6 +861,87 @@ footer {
   }
 }
 
+/* Bagian baru untuk News & Videos */
+.content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+.news-videos-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #1e3c72;
+    font-weight: 600;
+    margin: 3rem 0 2rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.news-videos-title::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background: #0052CC;
+    border-radius: 2px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.card-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #1e3c72;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+/* Akhir Bagian baru */
+
 
         @media (max-width: 768px) {
             .hero {
@@ -1074,19 +1155,16 @@ footer {
 
     <section class="hero" id="beranda">
 <div class="hero-carousel">
-    <!-- Slide 1 -->
     <div class="hero-slide slide-1 active" style="background-image: url('image/main.jpg');">
         <div class="hero-content">
             <h1>Wujudkan Impianmu</h1>
             <p>Beasiswa Pendidikan Mahasiswa Baru 2025</p>
             <div class="cta-buttons">
                 <a href="https://pmb.masoemuniversity.com/daftar" class="cta-button">Daftar Sekarang</a>
-                <a href="#" class="cta-button secondary">Info Beasiswa</a>
             </div>
         </div>
     </div>
 
-    <!-- Slide 2 -->
     <div class="hero-slide slide-2" style="background-image: url('image/infor.jpg');">
         <div class="hero-content">
             <h1>Informatika</h1>
@@ -1097,7 +1175,6 @@ footer {
         </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="hero-slide slide-3" style="background-image: url('image/teknik.jpg');">
         <div class="hero-content">
             <h1>Industri</h1>
@@ -1108,7 +1185,6 @@ footer {
         </div>
     </div>
 
-    <!-- Slide 4 (opsional) -->
     <div class="hero-slide slide-4" style="background-image: url('image/bd.jpg');">
         <div class="hero-content">
             <h1>Bisnis Digital</h1>
@@ -1189,11 +1265,9 @@ footer {
         </div>
     </div>
 
-    <!-- Navigation Arrows -->
     <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
     <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
 
-    <!-- Indicators -->
     <div class="carousel-indicators">
         <span class="indicator active" onclick="goToSlide(0)"></span>
         <span class="indicator" onclick="goToSlide(1)"></span>
@@ -1211,11 +1285,9 @@ footer {
 </div>
             
 
-            <!-- Navigation Arrows -->
             <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
             <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
 
-            <!-- Indicators -->
             <div class="carousel-indicators">
                 <span class="indicator active" onclick="goToSlide(0)"></span>
                 <span class="indicator" onclick="goToSlide(1)"></span>
@@ -1391,13 +1463,72 @@ footer {
             </div>
         </div>
     </section>
+<div class="content-wrapper">
+    <h2 class="news-videos-title">Latest News</h2>
+    <div class="card-grid">
+        <a href="berita-detail-page1.html" class="card">
+            <img src="image/berita 1.jpg" alt="Teknologi Pangan S1 Ma'soem University" class="card-image">
+            <div class="card-content">
+                <span class="card-date">31 Oktober 2025</span>
+                <p class="card-title">Apa itu S1 Teknologi Pangan Prospek Kerja dan Masa Depan Pangan</p>
+            </div>
+        </a>
+        <a href="berita-detail-page2.html" class="card">
+            <img src="image/berita 2.jpg" alt="Pendidikan Bahasa Inggris S1 Ma'soem University Bandung" class="card-image">
+            <div class="card-content">
+                <span class="card-date">24 Oktober 2025</span>
+                <p class="card-title">Prospek Kerja Jurusan Pendidikan Bahasa Inggris S1, Benarkah Hanya Jadi Guru?</p>
+            </div>
+        </a>
+        <a href="berita-detail-page3.html" class="card">
+            <img src="image/berita 3.jpg" alt="Agribisnis S1 Ma'soem University Buka Karir Luas" class="card-image">
+            <div class="card-content">
+                <span class="card-date">31 Oktober 2025</span>
+                <p class="card-title">Apa Itu Agribisnis S1 Memahami Jurusan dan Prospek Kerja Cerah</p>
+            </div>
+        </a>
+        <a href="berita-detail-page4.html" class="card">
+            <img src="image/berita4.jpg" alt="Pendidikan Bahasa Inggris S1 Ma'soem University Lahirkan Entrepreneur" class="card-image">
+            <div class="card-content">
+                <span class="card-date">30 Oktober 2025</span>
+                <p class="card-title">Supply Chain dan Logistik Jadi Bekal Mahasiswa Teknik Industri Hadapi Dunia Industri Modern</p>
+            </div>
+        </a>
+    </div>
 
+    <h2 class="news-videos-title">Latest Videos</h2>
+    <div class="card-grid">
+        <a href="https://www.youtube.com/watch?v=9jciyKqpgw8" class="card">
+            <img src="image/video 1.jpg" alt="Diversity Behind The Mask & Road to Kuliah Offline 2022" class="card-image">
+            <div class="card-content">
+                <p class="card-title">Diversity Behind The Mask & Road to Kuliah Offline 2022</p>
+            </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=asev4C2DMyc" class="card">
+            <img src="image/video 2.jpg" alt="Asrama Universitas Ma'soem (HANYA 200 RIBU/BULAN) FREE WiFi" class="card-image">
+            <div class="card-content">
+                <p class="card-title">Asrama Universitas Ma'soem (HANYA 200 RIBU/BULAN) FREE WiFi</p>
+            </div>
+        </a>
+        <a href="https://youtu.be/dY74NK9Av5Y" class="card">
+            <img src="image/video 3.jpg" alt="Interview With Risqa / Mahasiswa Jurusan Bahasa Inggris" class="card-image">
+            <div class="card-content">
+                <p class="card-title">Interview With Risqa / Mahasiswa Jurusan Bahasa Inggris (Juara ke -2 Speech Contest Tingkat Nasional)</p>
+            </div>
+        </a>
+        <a href="https://youtu.be/lyHr2ifW_hs" class="card">
+            <img src="image/video 4.jpg" alt="Profil & Fasilitas Kampus Universitas Ma'soem (Ma'soem University)" class="card-image">
+            <div class="card-content">
+                <p class="card-title">Profil & Fasilitas Kampus Universitas Ma'soem (Ma'soem University)</p>
+            </div>
+        </a>
+    </div>
+</div>
     <section class="cta-section" id="kontak">
         <h2>Siap Bergabung dengan Universitas Ma'soem?</h2>
         <p>Wujudkan impianmu menjadi sarjana dan pengusaha sukses bersama kami</p>
         <div class="cta-buttons">
             <a href="kontak.html" class="cta-button">Daftar Sekarang</a>
-            <a href="#" class="cta-button secondary">Download Brosur</a>
         </div>
     </section>
 
@@ -1439,7 +1570,6 @@ footer {
         </div>
     </div>
 </section>
-
 <footer>
   <div class="footer-main">
     <div class="footer-about">
